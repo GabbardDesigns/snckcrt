@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<{% block content_header %}
+    Inventory
+{% endblock %}
+
+{% block inventory %}
+
+{% for product in inventory %}
+    <div class="product" id="product-{{product.id}}" onClick="moveToCart({{product.id}})">
+
+        <div class="title noselect">
+            {{product.title}}
+        </div>
+
+        <div class="image_line noselect">
+            <img src="{% static product.imagepath %}" alt="{{product.alt}}" />
+        </div>
+
+        <div class="price noselect">
+            ${{product.price}}
+        </div>
+
+    </div>
+
+
+ {% endfor %}
+{% endblock %}
+

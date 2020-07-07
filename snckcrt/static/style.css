@@ -1,0 +1,819 @@
+/* ================================= 
+  Base Element Styles
+==================================== */
+
+html {
+  height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  color: #000;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 99vh;
+}
+
+.main-footer {
+  text-align: center;
+  font-size: 0.8em;
+  line-height: 1.5;
+  max-height: 5vh;
+  min-height: 5vh;
+  width: 100%;
+  background-color: #2b7a78;
+}
+
+.footer-inner {
+  padding-top: 1vh;
+  color: white;
+  font-size: 1.8vh;
+}
+
+p {
+  font-size: 0.95em;
+}
+
+a {
+  color: #093a58;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ================================= 
+Main Content Styles
+==================================== */
+
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100vw;
+}
+
+.inv_column,
+.order_column {
+  width: 100vw;
+  padding-right: 1.5vw;
+  padding-left: 1.5vw;
+}
+
+.title,
+.price {
+  text-align: center;
+  height: 4vh;
+  max-height: 4vh;
+  font-size: 1.8vh;
+  width: 100%;
+  line-height: 1em;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  padding-top: 0.5vh;
+}
+
+.product > img,
+.product > .image_line > img {
+  max-height: 100%;
+  margin: 0 auto;
+  justify-self: center;
+}
+
+.image_line {
+  height: 8vh;
+  max-height: 8vh;
+  text-align: center;
+}
+
+.pay_section {
+  order: 0;
+  flex: 1 0 30%;
+  flex-wrap: wrap;
+  display: flex;
+  min-height: 12vh;
+  max-height: 12vh;
+  min-width: 100vw;
+  max-width: 100vw;
+  justify-content: left;
+  align-items: center;
+  background-color: transparent;
+  border-top: 1vh #fff solid;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.button {
+  font-size: 2vh;
+  border-radius: 20px;
+  border: none;
+  height: 100%;
+  padding-left: 1vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin: 0 auto;
+}
+
+.total_section {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pay_button {
+  width: 100vw;
+  max-height: 5vh;
+  justify-content: space-evenly;
+  display: flex;
+}
+
+.button {
+  width: 30vw;
+  padding-right: 2vw;
+  height: 5vh;
+}
+
+.dollar {
+  flex: 0 43vw;
+}
+
+.coin {
+  flex: 0 21vw;
+}
+
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  min-height: 99vh;
+  background-color: #17252a;
+}
+
+.inv_column {
+  max-height: 44vh;
+  min-height: 44vh;
+}
+
+.order_column {
+  max-height: 29.5vh;
+  min-height: 29.5vh;
+  padding-top: 0.5vh;
+}
+
+.pay_section {
+  max-height: 20vh;
+  min-height: 20vh;
+  background-color: #feffff;
+}
+
+.section_title {
+  font-size: 2.6vh;
+  max-height: 5vh;
+  min-height: 5vh;
+  line-height: 1.9em;
+  color: #fff;
+  background-color: #2b7a78;
+  padding-left: 3vw;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+
+.inventory_list_section {
+  order: -5;
+  flex-wrap: wrap;
+  display: flex;
+  min-height: 39vh;
+  max-height: 39vh;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  justify-content: flex-start;
+  background-color: #feffff;
+}
+
+.order_list_section {
+  order: -3;
+  flex: 1 0 100%;
+  flex-wrap: wrap;
+  display: flex;
+  min-height: 24vh;
+  max-height: 24vh;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  justify-content: left;
+  background-color: #def2f1;
+}
+.product {
+  flex: 0 14vh;
+}
+
+.product,
+.coin,
+.dollar {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  margin: 0.5vh;
+  max-height: 18vh;
+  justify-content: space-evenly;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+#inventory_title {
+  order: -6;
+  flex: 1 0 100%;
+}
+
+#order_title {
+  order: -4;
+  flex: 1 0 100%;
+}
+
+.total_label {
+  font-size: 3.5vh;
+  color: #0e0e0e;
+  line-height: 1;
+  padding-left: 3vw;
+  width: 60vw;
+  max-width: 60vw;
+}
+
+.total_amount {
+  font-size: 3.5vh;
+  color: #0e0e0e;
+  line-height: 1;
+  padding-right: 2vw;
+  width: 35vw;
+  max-width: 35vw;
+}
+
+/* Payment Screen */
+
+.coin,
+.dollar {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5vw;
+  max-height: 18vh;
+}
+
+.dollar > .image_line {
+  height: 13vh;
+  max-height: 13vh;
+  text-align: center;
+  padding-top: 1vh;
+}
+
+.coin > .image_line {
+  height: 12vh;
+  max-height: 12vh;
+  text-align: center;
+  padding-top: 3px;
+}
+
+.coin > .title,
+.dollar > .title {
+  text-align: center;
+  font-size: 2vh;
+  width: 100%;
+  line-height: 2.5vh;
+  margin-top: 0.5vh;
+}
+
+.coin > img,
+.coin > .image_line > img,
+.dollar > img,
+.dollar > .image_line > img {
+  max-height: 100%;
+  margin: 0 auto;
+  justify-self: center;
+}
+
+/* Button Definitions */
+
+button {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+button.button {
+  background-color: #426de2;
+  color: #fff;
+}
+
+button.button.disable {
+  background-color: #ccc;
+  color: lightslategrey;
+}
+
+button.new {
+  background-color: #5cb85c;
+}
+
+button.refund {
+  background-color: orange;
+}
+
+#modal,
+#issue_Refund {
+  display: none;
+}
+
+/* ================================= 
+ROTATE PHONE MESSAGE
+**********************************/
+.phone {
+  height: 50px;
+  width: 100px;
+  border: 3px solid white;
+  border-radius: 10px;
+  animation: rotate 1.5s ease-in-out infinite alternate;
+  display: none;
+}
+
+.message {
+  color: white;
+  font-size: 1em;
+  margin-top: 40px;
+  display: none;
+}
+
+/* =============================================== 
+ROTATE YOUR SCREEN MESSAGE FOR PHONES IN LANDSCAPE
+**************************************************/
+
+@media (max-height: 541px) and (orientation: landscape) {
+  html,
+  body {
+    background: black;
+    height: 100%;
+    width: 100%;
+  }
+
+  .main-container {
+    display: none;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .phone,
+  .message {
+    display: block;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-90deg);
+    }
+    100% {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+/* ================================= 
+REFUND SCREEN
+**********************************/
+
+/* REFUND COLOR CHANGE */
+@media (orientation: portrait) {
+  #payOptions.refund_list_section,
+  #refunded.refund_list_section,
+  #inventoryBottom.refund_list_section {
+    background-color: #fff8e7;
+  }
+}
+
+@media (orientation: landscape) {
+  #first_container.refund_inv_column {
+    background-color: #fff8e7;
+  }
+
+  #second_container.refund_order_column {
+    background-color: #fffaf0;
+  }
+}
+
+#inventory_title.refund_section_title,
+#order_title.refund_section_title {
+  background-color: #ff9a40;
+}
+
+/* ================================= 
+ GENERAL MEDIA QUERIES
+==================================== */
+
+@media (orientation: portrait) {
+  .pay_section {
+    max-height: 15vh;
+    min-height: 15vh;
+  }
+
+  .pay_section {
+    max-height: 15vh;
+    min-height: 15vh;
+  }
+  .main-footer {
+    margin-bottom: 5vh;
+  }
+
+  .inventory_list_section {
+    min-height: 38vh;
+    max-height: 38vh;
+    background-color: #b9e3e3;
+  }
+  .main-container {
+    padding-top: 1.5vh;
+  }
+
+  .section_title {
+    padding-left: 5vw;
+  }
+
+  #inventoryBottom {
+    order: 0;
+    background-color: #b9e3e3;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    min-height: 1vh;
+    max-height: 1vh;
+  }
+}
+
+@media (orientation: landscape) {
+  body {
+    font-size: 0.8em;
+    line-height: 0.8em;
+  }
+
+  .main-header,
+  .main-nav {
+    width: 100%;
+    display: flex;
+  }
+  .main-header {
+    flex-direction: column;
+    align-items: center;
+    background-color: blanchedalmond;
+  }
+
+  .inv_column,
+  .order_column {
+    max-height: 70vh;
+    min-height: 70vh;
+    padding: 0;
+  }
+
+  .inv_column {
+    width: 59vw;
+    background-color: #b9e3e3;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    margin-left: 1vw;
+  }
+
+  .order_column {
+    max-width: 38vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    background-color: #def2f1;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+  }
+
+  #inventory_title {
+    order: 0;
+    flex: initial;
+    min-width: 59vw;
+    max-width: 59vw;
+    max-height: 8vh;
+    min-height: 8vh;
+  }
+
+  #order_title {
+    order: 0;
+    flex: initial;
+    min-width: 38vw;
+    max-width: 38vw;
+    max-height: 8vh;
+    min-height: 8vh;
+  }
+
+  .inventory_list_section {
+    order: 0;
+    flex: initial;
+    min-height: 25vh;
+    max-height: 62vh;
+    min-width: 58vw;
+    max-width: 58vw;
+    background-color: transparent;
+    padding-left: 1vw;
+  }
+
+  .product {
+    flex: 0 11vw;
+  }
+
+  .order_list_section {
+    order: 0;
+    flex: initial;
+    min-height: 1vh;
+    max-height: 62vh;
+    min-width: 37vw;
+    max-width: 37vw;
+    justify-content: flex-start;
+    background-color: transparent;
+    padding-left: 0.5vw;
+  }
+
+  .pay_section {
+    order: 0;
+    flex: initial;
+    min-height: 25vh;
+    max-height: 25vh;
+    justify-content: flex-start;
+  }
+
+  .button {
+    flex: initial;
+    font-size: 2.5vh;
+    border-radius: 20px;
+    height: 100%;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    max-width: 20%;
+  }
+
+  .section_title {
+    font-size: 3vw;
+    line-height: 8vh;
+    color: #fff;
+  }
+
+  .icon-bar a {
+    font-size: 8vh;
+  }
+
+  #flex-menu > .flex-order button {
+    font-size: 3vh;
+  }
+
+  .main-header {
+    max-height: 13vh;
+    border-bottom: #ccc solid 3vh;
+  }
+
+  .dollar {
+    flex: 0 26vw;
+  }
+  .dollar.paidIn {
+    flex: 0 17vw;
+  }
+
+  .coin {
+    flex: 0 12vw;
+  }
+
+  .coin.paidIn {
+    flex: 0 10vw;
+  }
+
+  .inventory_list_section > .product {
+    min-width: calc((100% / 7) - (0.25rem - 2px));
+    max-width: calc((100% / 5) - (0.25rem - 2px));
+  }
+
+  .order_list_section.product {
+    min-width: calc((100% / 3) - (0.25rem - 2px));
+    max-width: calc((100% / 3) - (0.25rem - 2px));
+  }
+}
+
+/* =================================================
+              MODAL STYLES
+===================================================*/
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: none;
+}
+
+#modal {
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  background-color: #fff;
+  border-radius: 20px;
+  text-align: center;
+  z-index: 11;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+#modal_X {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  padding-right: 5%;
+  width: 100%;
+  text-align: right;
+}
+
+#order_Completed,
+#new_Order {
+  display: none;
+}
+
+.modal_message {
+  padding: 0 5%;
+}
+
+.clearBut {
+  margin-left: 3%;
+  width: 40%;
+  height: 100%;
+  color: #fff;
+  font-size: 2.5vh;
+  border-radius: 20px;
+  border: none;
+  padding: 1vh 1vw;
+}
+
+.yesBut {
+  background-color: #5cb85c;
+}
+
+.noBut {
+  background-color: coral;
+}
+
+.RefundBut {
+  margin-left: 3%;
+  width: 60%;
+  height: 100%;
+  background-color: orange;
+  color: #fff;
+  font-size: 2.5vh;
+  border-radius: 20px;
+  border: none;
+  padding: 1vh 1vw;
+}
+
+.modalButtons {
+  text-align: center;
+}
+
+.modal_message a {
+  text-decoration: underline;
+}
+
+.modal_message button.new {
+  background-color: #5cb85c;
+  max-width: 50%;
+  margin: 15px 0px;
+}
+
+/* landscape specific modal styles */
+
+@media (orientation: landscape) {
+  .modal_message {
+    padding: 0 10%;
+    font-size: 3vh;
+    line-height: 3vh;
+  }
+
+  #modal {
+    width: 50%;
+  }
+
+  .modal_message h1 {
+    font-size: 4vh;
+    line-height: 5vh;
+  }
+
+  .modal_message a {
+    font-size: 2vh;
+  }
+}
+
+/* portrait specific modal styles */
+
+@media (orientation: portrait) {
+  .modal_message {
+    font-size: 3vh;
+    line-height: 3vh;
+  }
+
+  .modal_message h1 {
+    font-size: 4vh;
+    line-height: 5vh;
+  }
+
+  #modal {
+    width: 80%;
+    left: 10%;
+  }
+
+  .modal_message a {
+    font-size: 2vh;
+  }
+}
+
+/* NO SCRIPT MODAL */
+#noScriptOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 10;
+}
+
+#noScriptMessage {
+  width: 50%;
+  line-height: 3em;
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  background-color: #fff;
+  border: #426de2 3px solid;
+  border-radius: 20px;
+  text-align: center;
+  z-index: 11;
+}
+
+/* ================================= 
+Functional and Scripting Styles
+==================================== */
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Chrome and all newer browsers */
+  pointer-events: none;
+}
+
+.pale {
+  filter: saturate(50%);
+}
+
+.inventory_list_section::-webkit-scrollbar,
+.order_list_section::-webkit-scrollbar .total_section::-webkit-scrollbar {
+  display: none;
+}
+
+.disable {
+  pointer-events: none;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%), blur(20%);
+  background-color: #ccc;
+  color: lightslategrey;
+}
+
+.product:active:hover,
+.dollar:active:hover,
+.coin:active:hover {
+  transform: scale(0.95, 0.95);
+}
+
+.product:focus,
+.dollar:focus,
+.coin:focus {
+  transform: scale(0.95, 0.95);
+}
+
+button:active:hover {
+  transform: scale(0.95, 0.95);
+}
+
+button:focus {
+  transform: scale(0.95, 0.95);
+}

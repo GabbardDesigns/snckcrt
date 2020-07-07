@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+<{% block content_header %}
+    {{product.title}}
+{% endblock %}
+
+{% block content %}
+Product Details
+
+<p>
+ <h3>Description</h3>
+  {% if product.description %}
+   {{product.description}}
+  {% else %}
+   Coming Soon.
+  {% endif %}
+<h3>Price</h3>
+  {{product.price}}
+
+ </p>
+<p><a href="/inventory/">Return to Inventory view</a><p>
+{% endblock %}
