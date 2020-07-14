@@ -10,16 +10,22 @@ Inventory will be editable.
 
 FROM SNACKCART 1.0 README
 
-Purpose
+1. Setup a virtual environment 
+2. Activate the environment in command prompt or terminal
+3. Clone the GitHub project in your local directory with command git clone http://user.exampleproject.git
+3. Run the command in console "pip install -r requirements.txt".  This command will install the necessary packages required to run the project.
+4. Go the the directory where Django project is present and manage.py file is present.
+5. python manage.py make migrations
+6. python manage.py migrate
+7. python manage.py runserver
 
+Purpose
      - Point of Sales (POS) system for a student run snack cart   
 
 Users 
-
      - Children with developmental disabilities (limited reading and math skills)
 
 Functional Requirements
-
      - Students must be able to click (touch) items to add them to the shopping order.  
      - A total must be presented to students and be used to help them understand how much is needed to be paid.  
      - There must be a way to reset the register once the transaction is completed. 
@@ -29,17 +35,14 @@ Nice to Have
      - Overpayment/Refund - The system should help students determine if change is needed and how much.  
 
 Design Considerations
-
      - The intended use case for this solution is on a tablet or laptop in widescreen layout.  For this reason, portrait and phone configurations are a secondary consideration.
 
 Distribution
-
      - The initial version will be a web-based application with a set inventory.  
 
 Future Improvements
 
 The full version of this application will be deployed on Android and iOS mobile devices using react-native and react-fs.  This version will feature an admin interface that will allow users with the admin code (a set code initially, changeable within the admin interface) to:
-
      - Add new inventory items
      - Change the name, price, etc of items
      - Manage the availability of inventory (by marking active or inactive)

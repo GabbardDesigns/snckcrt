@@ -1,0 +1,25 @@
+
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+9
+	manage.py,3\1\3156ad13e4d695cd526bbb7b031016ecba842270
+A
+products/forms.py,1\8\18290037a6c6f23e022d2baa2e1e1ce35b23ac91
+?
+snckcrt/urls.py,3\0\30b56bcd7632a09f7690bddf25f35209b20c4cef
+C
+snckcrt/settings.py,1\e\1e470e31fbc57ee27830796a781e94da84b38500
+C
+templates/base.html,d\a\da7c237b85a69c00a9ab8c189bf63e22070fcac3
+F
+templates/landing.html,a\5\a5d27e56d287f90929a1e49c10d22f46580ee5a6
+C
+templates/home.html,8\6\86f3a00c4de0ad1280042b4c75ce3672e5141a0f
+Q
+!products/templates/inventory.html,1\5\156c656aa3386cd2cd451d5294abedefabe3ff1c
+A
+products/views.py,e\7\e7c0df80dbe407ceab2293cb3ce846b3cc0b1733
+@
+products/urls.py,c\3\c3cf7c6b7cba09d947e60eed5c7b4eb3b2f3ccdf
+B
+products/models.py,5\b\5b4db18331b8f185b9797bbf6cdc7c6da8f6e904

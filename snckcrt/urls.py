@@ -15,11 +15,14 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.conf import settings
 from django.urls import path
 from django.conf.urls import include
+from django.conf.urls.static import static
 
 from pages.views import home_view, contact_view, about_view
-from products.views import product_create_view, product_inventory_view
+from products.views import product_create_view, product_select_items_view
+from users.views import dashboard
 
 urlpatterns = [
     path('', home_view, name='home'),
@@ -27,8 +30,12 @@ urlpatterns = [
     path('homes/', home_view, name='home'),
     path('about/', about_view, name='about'),
     path('contact/', contact_view, name='contact_us'),
-    path('inventory/', product_inventory_view, name='inventory'),
+    path('inventory/', product_select_items_view, name='inventory'),
     path('product/', include('products.urls')),
     path('newproduct/', product_create_view, name='addproducts'),
+    path('dashboard/', dashboard, name="dashboard"),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

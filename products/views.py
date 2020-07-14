@@ -2,6 +2,9 @@ from django.shortcuts import render
 
 from .models import Product
 from .forms import NewProductForm, RawProductForm
+
+from django.urls import reverse_lazy
+
 # Create your views here.
 
 
@@ -9,13 +12,14 @@ def product_create_view(request):
     form = NewProductForm(request.POST or None)
     if form.is_valid():
         form.save()
+
         form = NewProductForm()
 
     context = {
         'form': form
     }
     return render(request, 'product/newproduct.html', context)
-#
+
 # def product_create_view(request):
 #     prod_form = RawProductForm()
 #     if request.method == "POST":
@@ -30,12 +34,12 @@ def product_create_view(request):
 #     return render(request, 'product/newproduct.html', context)
 
 
-def product_inventory_view(request):
+def product_select_items_view(request):
     inventory = Product.objects.all()
     context = {
         'inventory': inventory,
     }
-    return render(request, 'inventory.html', context)
+    return render(request, 'selectItems.html', context)
 
 
 def product_detail_view(request, id):

@@ -4,10 +4,51 @@ from django.db import models
 
 
 class Product(models.Model):
-    title = models.CharField(max_length=120, blank=False) # max_length = required
-    description = models.TextField(blank=True, null=True)
-    price = models.DecimalField(blank=False, max_digits=8, decimal_places=2)
-    summary = models.TextField(default="Best product ever.")
-    active = models.BooleanField(blank=False, default=True)
-    alt = models.TextField(blank=True, null=True, default="items")
-    imagepath = models.CharField(max_length=120, blank=False, default="https://images.squarespace-cdn.com/content/v1/5a1592ff0abd04e470d48744/1512553461588-BZ9X4L2F5CINL2DU8QTF/ke17ZwdGBToddI8pDm48kPQujXO7frs1W7a77FZyt1F7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0prfa1Z6IeUrCPboCAmmHZn3ZVtqnTHXt-4Tm3byPSNDpHfFtqjKxWw0uc1YBtkl-w/Kaas.jpeg?format=2500w") # max_length = required
+    title = models.CharField("Product Name", max_length=120, blank=False)
+    #description = models.TextField(blank=True, null=True)
+    price = models.DecimalField("Price per Unit", blank=False, max_digits=8, decimal_places=2)
+    #summary = models.TextField(default="Best product ever.")
+    imagepath = models.ImageField("Image", upload_to='documents/images', default="", null=True)
+    alt = models.TextField("Short Description", blank=True, null=True, default="items")
+    active = models.BooleanField("Show this product in my inventory.", blank=False, default=True)
+
+
+
+class Cart:
+
+    def __init__(self):
+        self.cart = []
+
+    def __len__(self):
+        return len(self.cart)
+
+    def addtocart(self, inventory, selection):
+
+        confirm = input(f'Add {inventory[selection]["title"]} to your cart? (y/n)  ')
+
+        if confirm == 'y':
+            print(f'{inventory[selection]["title"]} successfully added to cart.')
+            self.cart.append(inventory[selection])
+        else:
+            print('Well, alright then.  Bye.')
+
+    def removefromcart(self, selection):
+        confirm = input(f'Remove {self[selection]["title"]} from your cart? (y/n)  ')
+        self.cart.remove(selection)
+        #
+        # if confirm == 'y':
+        #     print(f'{inventory[selection]["title"]} successfully added to cart.')
+        #     self.cart.append(inventory[selection])
+        # else:
+        #     print('Well, alright then.  Bye.')
+
+
+    def calculateTotal(self):
+        total = 0.00
+        for c, items in enumerate(self.cart, 0):
+            total += float(items["price"])
+        return total
+
+    def showcart(self):
+        for c, items in enumerate(self.cart, 0):
+            print(f'{c:<3} |   {items["title"]:<20} |   {items["price"]:>8}')

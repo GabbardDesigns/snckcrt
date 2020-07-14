@@ -5,7 +5,7 @@
     Inventory
 {% endblock %}
 
-{% block inventory %}
+{% block content %}
 
 {% for product in inventory %}
     <div class="product" id="product-{{product.id}}" onClick="moveToCart({{product.id}})">
@@ -15,7 +15,7 @@
         </div>
 
         <div class="image_line noselect">
-            <img src="{% static product.imagepath %}" alt="{{product.alt}}" />
+            <img src="{{ product.imagepath.url}}" alt="{{product.alt}}" />
         </div>
 
         <div class="price noselect">

@@ -1,4 +1,5 @@
 {% load static %}
+{% load thumbnail %}
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -104,11 +105,9 @@
       <div id="inventory_title" aria-live="polite" class="section_title">Our Products</div>
       <div id="inventory" aria-live="polite" class="inventory_list_section">
 
-        {% block inventory %}
+        {% block content %}
             Replace me
         {% endblock %}
-
-
 
       </div>
       <div id="inventoryBottom" aria-live="polite"></div>
@@ -148,8 +147,7 @@
 
   </main>
   <!--/main-container-->
-
-  <script src="js/core.js?v=1"></script>
+  <script src="{% static 'scripts/core.js' %}"></script>
 
 </body>
 
