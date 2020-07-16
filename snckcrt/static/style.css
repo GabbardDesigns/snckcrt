@@ -414,6 +414,18 @@ REFUND SCREEN
   background-color: #ff9a40;
 }
 
+  .main-header,
+  .main-nav {
+    width: 100%;
+    display: flex;
+  }
+  .main-header {
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #ccc;
+  }
+
+
 /* ================================= 
  GENERAL MEDIA QUERIES
 ==================================== */
@@ -461,16 +473,6 @@ REFUND SCREEN
     line-height: 0.8em;
   }
 
-  .main-header,
-  .main-nav {
-    width: 100%;
-    display: flex;
-  }
-  .main-header {
-    flex-direction: column;
-    align-items: center;
-    background-color: blanchedalmond;
-  }
 
   .inv_column,
   .order_column {
@@ -568,16 +570,15 @@ REFUND SCREEN
   }
 
   .icon-bar a {
-    font-size: 8vh;
+    font-size: 2vh;
   }
 
-  #flex-menu > .flex-order button {
-    font-size: 3vh;
+  #flex-menu {
+    font-size: 2vh;
   }
 
   .main-header {
-    max-height: 13vh;
-    border-bottom: #ccc solid 3vh;
+    max-height: 10vh;
   }
 
   .dollar {

@@ -469,7 +469,7 @@ REFUND SCREEN
   .main-header {
     flex-direction: column;
     align-items: center;
-    background-color: blanchedalmond;
+    background-color: #ccc;
   }
 
   .inv_column,
@@ -576,8 +576,8 @@ REFUND SCREEN
   }
 
   .main-header {
-    max-height: 13vh;
-    border-bottom: #ccc solid 3vh;
+    max-height: 16vh;
+    /*border-bottom: #ccc solid 3vh;*/
   }
 
   .dollar {
