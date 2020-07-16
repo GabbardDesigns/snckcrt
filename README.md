@@ -10,14 +10,17 @@ Inventory will be editable.
 
 FROM SNACKCART 1.0 README
 
-1. Setup a virtual environment 
-2. Activate the environment in command prompt or terminal
-3. Clone the GitHub project in your local directory with command git clone http://user.exampleproject.git
-3. Run the command in console "pip install -r requirements.txt".  This command will install the necessary packages required to run the project.
-4. Go the the directory where Django project is present and manage.py file is present.
-5. python manage.py make migrations
-6. python manage.py migrate
-7. python manage.py runserver
+1. Setup a virtual environment (python -m venv /path/to/new/virtual/environment)
+2. Activate the environment in command prompt or terminal ($ source <venv>/bin/activate or C:\> <venv>\Scripts\activate.bat)
+3. Clone the GitHub project in your local directory with command git clone https://github.com/GabbardDesigns/snckcrt.git
+4. Run the command in console "pip install -r requirements.txt".  This command will install the necessary packages required to run the project.
+5. Go the the directory where Django project is present and manage.py file is present.
+6. Create a superuser: python manage.py createsuperuser
+6. In the terminal run: python manage.py make migrations
+7. In the terminal run: python manage.py migrate
+8. In the terminal run: python manage.py runserver
+9. Access the front-end web interface at http://127.0.0.1:8000/ 
+10. Access the admin interface at http://127.0.0.1:8000/admin
 
 Purpose
      - Point of Sales (POS) system for a student run snack cart   

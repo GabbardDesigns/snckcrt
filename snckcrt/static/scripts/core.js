@@ -1,6 +1,5 @@
 // Declare Global Variables
 var inventorySection = "";
-// var inventoryView = "";
 var paymentArray = [];
 var paymentOptions_Array = [];
 var inventory_Array = [];
@@ -9,16 +8,12 @@ var output = "";
 var ordersBlock = "";
 var price = parseFloat("0.00", 10);
 var productsPrice = 0;
-// var paymentTotal = 0;
-var refundOptions_Array = [];
 var refundArray = [];
 var refundAmount;
 var refundTotal = 0;
 var refundDue;
 var modalPermissions = true;
 var refundModalPermissions = true;
-// var paymentTotal = 0;
-
 
 // refactoring for ease of read
 const getById = id => document.getElementById(id);
@@ -26,44 +21,13 @@ const getById = id => document.getElementById(id);
 let modal = getById("modal");
 let overlay = getById("overlay");
 
-
-// Read JSON Datafile for refundOptions
-const getRefundOptions = () => {
-  let request = new XMLHttpRequest();
-  request.open("GET", "./data/refund.json", true);
-  request.onload = function() {
-    if (request.status >= 200 && request.status < 400) {
-      // Success!
-      let data = JSON.parse(request.responseText);
-      //  console.log(data);
-      data.forEach(function(val, key) {
-        refundOptions_Array.push([
-          key,
-          val.title,
-          val.imagepath,
-          val.price,
-          val.type,
-          val.value,
-          val.alt
-        ]);
-      });
-    }
-  };
-  request.send();
-}
-
-getRefundOptions();
-
-
 // Read JSON Datafile for paymentOptions
 const getPaymentOptions = () => {
   let request = new XMLHttpRequest();
-  request.open("GET", "./data/pay.json", true);
+  request.open("GET", "/static/data/pay.json", true);
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
-      // Success!
       let data = JSON.parse(request.responseText);
-      //  console.log(data);
       data.forEach(function(val, key) {
         paymentOptions_Array.push([
           key,
@@ -79,19 +43,15 @@ const getPaymentOptions = () => {
   };
   request.send();
 }
-
 getPaymentOptions();
-
 
 // Read JSON Datafile for starter inventory and define inventory section in the HTML
 const importInventory = () => {
   let request = new XMLHttpRequest();
-  request.open("GET", "./data/inventory.json", true);
+  request.open("GET", "/static/data/inventory.json", true);
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
-      // Success!
       let data = JSON.parse(request.responseText);
-      //  console.log(data);
       data.forEach(function(val, key) {
         inventory_Array.push([
           key,
@@ -509,21 +469,21 @@ const refundView = () => {
   let inventorySwitch = "";
   inventorySwitch +=
     '<div id="inventory_title" class="section_title">Refund Options</div> <div id="payOptions" class="inventory_list_section">';
-  for (let i = 0; i < refundOptions_Array.length; i++) {
+  for (let i = 0; i < paymentOptions_Array.length; i++) {
     inventorySwitch +=
       '<div class="' +
-      refundOptions_Array[i][4] +
+      paymentOptions_Array[i][4] +
       '" id="pay-' +
-      refundOptions_Array[i][0] +
+      paymentOptions_Array[i][0] +
       '" onclick="refund(this.id)"><div class="image_line noselect"><img src="' +
-      refundOptions_Array[i][2] +
+      paymentOptions_Array[i][2] +
       '" alt="' +
-      refundOptions_Array[i][6] +
+      paymentOptions_Array[i][6] +
       '">' +
       '</div><p class="title noselect">' +
-      refundOptions_Array[i][1];
+      paymentOptions_Array[i][1];
     inventorySwitch += "   $";
-    inventorySwitch += formatMoney(refundOptions_Array[i][5]) + "</p></div>";
+    inventorySwitch += formatMoney(paymentOptions_Array[i][5]) + "</p></div>";
   }
 
   inventorySwitch += `</div><div id="inventoryBottom" aria-live="polite"></div> `;
@@ -558,9 +518,9 @@ const refundView = () => {
 
 // Function issueRefund - For each payment option, checks to see if it is greater than the total amount needed to be refunded, if so, disables.
 const issueRefund = stillDue => {
-  for (let i = 0; i < refundOptions_Array.length; i++) {
-    let refundItemValue = parseFloat(refundOptions_Array[0][3], 10);
-    if (refundOptions_Array[i][3] > stillDue) {
+  for (let i = 0; i < paymentOptions_Array.length; i++) {
+    let refundItemValue = parseFloat(paymentOptions_Array[0][3], 10);
+    if (paymentOptions_Array[i][3] > stillDue) {
       let name = "pay-" + [i];
       getById(name).classList.add("disable");
     }
@@ -591,12 +551,12 @@ const refund = id => {
   let mykey = parseInt(splits[1]);
 
   // Finds the split part inside of the refundOptions Array
-  let key = parseInt(refundOptions_Array[mykey][0], 10);
-  let payValue = -1 * formatMoney(refundOptions_Array[key][3], 2);
-  let payImage = refundOptions_Array[key][2];
-  let payTitle = refundOptions_Array[key][1];
-  let payClass = refundOptions_Array[key][4];
-  let payAlt = refundOptions_Array[key][6];
+  let key = parseInt(paymentOptions_Array[mykey][0], 10);
+  let payValue = -1 * formatMoney(paymentOptions_Array[key][3], 2);
+  let payImage = paymentOptions_Array[key][2];
+  let payTitle = paymentOptions_Array[key][1];
+  let payClass = paymentOptions_Array[key][4];
+  let payAlt = paymentOptions_Array[key][6];
   refundArray.push([key, payTitle, payImage, payValue, payClass, payAlt]);
 
   //Redraws the refund section
@@ -612,8 +572,8 @@ const removeRefund = id => {
   refundArray.splice([mykey], 1);
   redrawRefund();
 
-  for (let i = 0; i < refundOptions_Array.length; i++) {
-    if (refundOptions_Array[i][3] <= formatMoney(refundTotal)) {
+  for (let i = 0; i < paymentOptions_Array.length; i++) {
+    if (paymentOptions_Array[i][3] <= formatMoney(refundTotal)) {
       let name = "pay-" + [i];
       getById(name).classList.remove("disable");
     }

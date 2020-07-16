@@ -1,0 +1,151 @@
+[
+
+    { 
+        "title": "Bottled Water",
+        "imagepath": "/static/images/products/bottledwater.gif",
+        "price": "0.50",
+        "alt" : "16 ounce bottle of water"
+    },
+
+    { 
+        "title": "Frappuccino",
+        "imagepath": "/static/images/products/frap.gif",
+        "price": "1.00",
+        "alt" : "12 ounce bottle of Frappuccino"
+    },
+
+
+    { 
+        "title": "Gatorade",
+        "imagepath": "/static/images/products/gatorade.gif",
+        "price": "1.00",
+        "alt" : "16 ounce bottle of Gatorade"
+    },
+
+    { 
+        "title": "Monster Energy",
+        "imagepath": "/static/images/products/monster-energy.gif",
+        "price": "2.00",
+        "alt" : "16 ounce can of Monster Energy drink"
+    },
+
+    { 
+        "title": "Monster Energy x2",
+        "imagepath": "/static/images/products/monster-energy2.gif",
+        "price": "3.50",
+        "alt" : "16 ounce cans of Monster Energy drink"
+    },
+
+    { 
+        "title": "Soda",
+        "imagepath": "/static/images/products/soda.gif",
+        "price": "0.50",
+        "alt" : "12 oz can of Soda"
+    },
+
+    { 
+        "title": "Tea",
+        "imagepath": "/static/images/products/tea.gif",
+        "price": "1.00",
+        "alt" : "16 ounce bottle of tea"
+    },
+
+    { 
+        "title": "Vitamin Water",
+        "imagepath": "/static/images/products/vitamin-water.gif",
+        "price": "1.00",
+        "alt" : "16 ounce bottle of Vitamin Water"
+    },
+
+{ 
+    "title": "Blow Pop",
+    "imagepath": "/static/images/products/blowpop.gif",
+    "price": "0.25",
+    "alt" : "Bag Animal Crackers"
+},
+
+{ 
+    "title": "Laffy Taffy (3)",
+    "imagepath": "/static/images/products/laffy-taffy.gif",
+    "price": "0.25",
+    "alt" : "12 ounce bottle of Apple Juice"
+},
+
+{ 
+    "title": "Candy Bar",
+    "imagepath": "/static/images/products/kitkat.gif",
+    "price": "1.00",
+    "alt" : "A single candy bar"
+},
+
+{ 
+    "title": "Candy Bar x 2",
+    "imagepath": "/static/images/products/2candy.gif",
+    "price": "1.50",
+    "alt" : "2 candy bars"
+},
+
+{ 
+    "title": "Banana Bread",
+    "imagepath": "/static/images/products/Banana-Bread.gif",
+    "price": "0.50",
+    "alt" : "A package of crackers"
+},
+
+{ 
+    "title": "Chips",
+    "imagepath": "/static/images/products/chips.gif",
+    "price": "0.50",
+    "alt" : "10 oz bag of chips"
+},
+
+{ 
+    "title": "Cinnamon Roll",
+    "imagepath": "/static/images/products/Cinnamon-Rolls.gif",
+    "price": "1.00",
+    "alt" : "A cinnamon roll"
+},
+
+{ 
+    "title": "Cookies",
+    "imagepath": "/static/images/products/cookie.gif",
+    "price": "0.50",
+    "alt" : "A big yummy cookie"
+},
+
+{ 
+    "title": "Crackers",
+    "imagepath": "/static/images/products/crackers.gif",
+    "price": "0.50",
+    "alt" : "A package of crackers"
+},
+
+{ 
+    "title": "Granola Bar",
+    "imagepath": "/static/images/products/granola.gif",
+    "price": "0.50",
+    "alt" : "A granola bar"
+},
+
+{ 
+    "title": "Peanuts",
+    "imagepath": "/static/images/products/peanuts.gif",
+    "price": "0.75",
+    "alt" : "A package of peanuts"
+},
+
+{ 
+    "title": "Pickle",
+    "imagepath": "/static/images/products/dill-pickle.gif",
+    "price": "1.00",
+    "alt" : "A Pickle"
+},
+
+{ 
+    "title": "Rice Krispy Treat",
+    "imagepath": "/static/images/products/ricetreat.gif",
+    "price": "0.50",
+    "alt" : "A Rice Krispy Treat"
+}
+
+]

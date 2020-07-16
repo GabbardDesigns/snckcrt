@@ -3,6 +3,8 @@
 
 <{% block content_header %}
     Inventory
+    {{ my_info |json_script:"my-info" }}
+
 {% endblock %}
 
 {% block content %}
