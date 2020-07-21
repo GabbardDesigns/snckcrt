@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block inventory_area_title %}
+    Action Center
+{% endblock %}
+
+{% block inventory_area %}
+    <div aria-live="polite"  class="inventory_list_section">
+
+     <div class="product" onClick="location.href='../inventory'" >
+         <div class="title noselect">
+             View or Edit
+         </div>
+
+         <div class="image_line noselect">
+              <img src="/static/images/cpanel/edit_userCS.png">
+         </div>
+
+         <div class="price noselect">
+             Users
+         </div>
+     </div>
+
+    <div class="product" onClick="location.href='../inventory'" >
+         <div class="title noselect">
+             Add New
+         </div>
+
+         <div class="image_line noselect">
+              <img src="/static/images/cpanel/add_userCS.png">
+
+         </div>
+
+         <div class="price noselect">
+             Users
+         </div>
+     </div>
+
+    <div class="product" onClick="location.href='../product/selectproduct'" >
+         <div class="title noselect">
+             View or Edit
+         </div>
+
+         <div class="image_line noselect">
+              <img src="/static/images/cpanel/edit_productCS.png">
+
+         </div>
+
+         <div class="price noselect">
+             Products
+         </div>
+     </div>
+
+    <div class="product" onClick="location.href='../product/newproduct'">
+         <div class="title noselect">
+             Add New
+         </div>
+
+         <div class="image_line noselect">
+              <img src="/static/images/cpanel/add_productCS.png">
+
+         </div>
+
+         <div class="price noselect">
+             Products
+         </div>
+     </div>
+
+
+    </div>
+{% endblock %}
+
+{% block order_area_title %}
+    Quick Navigation
+{% endblock %}
+
+{% block order_list_section %}
+<div class="order_list_section" aria-relevant="additions removals" aria-live="polite">
+    <ul>
+        <li> <a href="#">View user list</a></li>
+        <li> <a href="#">Add a new user</a></li>
+        <li> <a href="#">Review product inventory</a></li>
+        <li> <a href="#">Add a new product</a></li>
+    </ul>
+</div>
+{% endblock %}

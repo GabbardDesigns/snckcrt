@@ -9,6 +9,9 @@ def home_view(request, *args, **kwargs):
     print(request.user)
     return render(request, 'home.html', {})
 
+def cpanel_view(request, *args, **kwargs):
+    return render(request, 'cpanel.html', {})
+
 
 def about_view(request, *args, **kwargs):
     my_context = {

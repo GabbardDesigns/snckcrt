@@ -95,14 +95,12 @@
 
     <!-- Start of redrawable #first_container (top or left depending on orientation) -->
     <div class="inv_column" id="first_container" aria-atomic="true">
-      <div id="inventory_title" aria-live="polite" class="section_title">Our Products</div>
-      <div id="inventory" aria-live="polite" class="inventory_list_section">
+      <div id="inventory_title" aria-live="polite" class="section_title">{% block inventory_area_title %}Our Products{% endblock %}</div>
 
-        {% block content %}
-            Replace me
-        {% endblock %}
+      {% block inventory_area %}
+            <div  aria-live="polite" class="inventory_list_section"></div>
+      {% endblock %}
 
-      </div>
       <div id="inventoryBottom" aria-live="polite"></div>
     </div>
 
@@ -110,8 +108,10 @@
 
     <!-- Start of redrawable #second_container (middle or right depending on orientation) -->
     <div class="order_column" id="second_container" aria-atomic="true">
-      <div id="order_title" class="section_title" aria-live="polite">This Order</div>
-      <div class="order_list_section" id="orders" aria-relevant="additions removals" aria-live="polite"></div>
+      <div id="order_title" class="section_title" aria-live="polite">{% block order_area_title %}This Order{% endblock %}</div>
+        {% block order_list_section %}
+            <div class="order_list_section" aria-relevant="additions removals" aria-live="polite"></div>
+        {% endblock %}
     </div>
     <!-- /#second_container -->
 

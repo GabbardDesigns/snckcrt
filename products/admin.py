@@ -1,16 +1,14 @@
+import json
 from django.contrib import admin
-
-# Register your models here.
-
-from .models import Product
-
-admin.site.register(Product)
-
-# modify Admin page
-
+from django.utils.safestring import mark_safe
+from django.core.serializers.json import DjangoJSONEncoder
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 from copy import deepcopy
+
+# Register your models here.
+from .models import Product
+from django.db.models.fields.files import ImageFieldFile
 
 
 class UserAdmin(UserAdmin):
@@ -31,6 +29,37 @@ class UserAdmin(UserAdmin):
 
         return fieldsets
 
+
 User = get_user_model()
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+
+
+@admin.register(Product)
+
+class ProductAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        inventory = list(Product.objects.exclude(active=False).values())
+        with open('snckcrt/static/data/refund.json', 'w') as teacherfile:
+            teacherfile.write('[')
+            for count, product in enumerate(inventory):
+                 json.dump(product, teacherfile, cls=DjangoJSONEncoder)
+                 if count < len(inventory)-1:
+                     teacherfile.write(', ')
+            teacherfile.write(']')
+            teacherfile.close()
+
+
+class ImageAdmin(admin.ModelAdmin):
+    # explicitly reference fields to be shown, note image_tag is read-only
+    fields = ('title','imagepath','price','image_tag')
+    readonly_fields = ('image_tag',)
+
+    def product_image(self, obj):
+        return mark_safe('<img src="{url}" width="{width}" height={height} />'.format(
+            url=obj.image_tag.url,
+            width=obj.image_tag.width,
+            height=obj.image_tag.height,
+        )
+        )

@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
 
     # my apps
-    'products', 'pages', 'users',
+    'products', 'pages', 'templates',
 ]
 
 MIDDLEWARE = [

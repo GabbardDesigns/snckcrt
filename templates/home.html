@@ -1,9 +1,21 @@
 {% extends 'base.html' %}
 
 <{% block content_header %}
-    Home
+
 {% endblock %}
 
-<{% block content %}
-    <h1>Hello world again.</h1>
+{% block inventory_area_title %}
+    Our Products
+{% endblock %}
+
+{% block inventory_area %}
+    <div id="inventory" aria-live="polite" class="inventory_list_section"> </div>
+{% endblock %}
+
+{% block order_area_title %}
+    This Order
+{% endblock %}
+
+{% block order_list_section %}
+<div class="order_list_section" id="orders" aria-relevant="additions removals" aria-live="polite"></div>
 {% endblock %}

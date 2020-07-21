@@ -8,11 +8,13 @@ class NewProductForm(forms.ModelForm):
         model = Product
         fields = [
             'title',
-            #'description',
+            # 'description',
             'price',
-            #'summary',
+            # 'summary',
             'active',
-            'imagepath'
+            'imagepath',
+            'alt',
+
         ]
 
     def clean_title(self, *args, **kwargs):
@@ -30,4 +32,5 @@ class RawProductForm(forms.Form):
     docfile = forms.FileField(
         label='Select a file',
     )
+
 

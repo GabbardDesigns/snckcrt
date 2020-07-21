@@ -1,7 +1,8 @@
-
+from django.contrib import admin
 from django.shortcuts import render
 
-
 def dashboard(request):
-    return render(request, "users/dashboard.html")
+    return render(request, "users/../admin/dashboard.html")
+
+
 

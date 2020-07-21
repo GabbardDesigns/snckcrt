@@ -20,9 +20,9 @@ from django.urls import path
 from django.conf.urls import include
 from django.conf.urls.static import static
 
-from pages.views import home_view, contact_view, about_view
-from products.views import product_create_view, product_select_items_view
-from users.views import dashboard
+from pages.views import home_view, contact_view, about_view, cpanel_view
+from products.views import product_select_items_view
+
 
 urlpatterns = [
     path('', home_view, name='home'),
@@ -32,10 +32,8 @@ urlpatterns = [
     path('contact/', contact_view, name='contact_us'),
     path('inventory/', product_select_items_view, name='inventory'),
     path('product/', include('products.urls')),
-    path('newproduct/', product_create_view, name='addproducts'),
-    path('dashboard/', dashboard, name="dashboard"),
+    path('cpanel/', cpanel_view, name="control panel"),
 
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
