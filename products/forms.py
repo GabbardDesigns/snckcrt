@@ -1,5 +1,4 @@
 from django import forms
-
 from .models import Product
 
 
@@ -8,13 +7,10 @@ class NewProductForm(forms.ModelForm):
         model = Product
         fields = [
             'title',
-            # 'description',
             'price',
-            # 'summary',
             'active',
             'imagepath',
             'alt',
-
         ]
 
     def clean_title(self, *args, **kwargs):

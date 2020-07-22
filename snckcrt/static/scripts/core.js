@@ -54,6 +54,8 @@ const importInventory = () => {
     if (request.status >= 200 && request.status < 400) {
       let data = JSON.parse(request.responseText);
       data.forEach(function(val, key) {
+        newpath = 'media/' + val.imagepath
+        val.imagepath = newpath
         inventory_Array.push([
           key,
           val.title,

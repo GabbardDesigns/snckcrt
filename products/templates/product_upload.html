@@ -1,0 +1,86 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}">{% endblock %}
+
+{% block content %}
+<div class="main-container">
+
+<div id="first_container" class="inv_column">
+
+    <div id="inventory_title" aria-live="polite" class="section_title">Upload Products Via CSV file</div>
+    <div id="inventory" aria-live="polite" class="inventory_list_section">
+
+    {% if messages %}
+        {% for message in messages %}
+            <div>
+                <strong>{{message|safe}}</strong>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div>
+        <p>Order of the CSV should be: title,price,imagepath,alt,active. </p>
+
+        <h2>Explaination of Fields</h2>
+
+            <p><strong>Title</strong></br>
+                Textfield, no more than 20 characters
+            </p>
+
+            <p>
+                <strong>Price:</strong> </br>
+                Must be a number
+            </p>
+
+            <p>
+                <strong>imagepath</strong></br>
+                You will have to edit the items to upload the images, so this can be anything but blank
+            </p>
+            <p>
+                <strong>alt:</strong></br>
+                Free text with a 30 character limit
+            </p>
+            <p><strong>active:</strong></br>
+                Boolean value and must be True or False
+            </p>
+        </div>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file1"> Upload a file</label>
+        <input type="file" id="file1" name="file">
+        <small>Only accepts CSV files</small>
+        <button type="submit">Upload</button>
+    </form>
+    {% endif %}
+
+    {% for product in products %}
+    {{product.name}}
+    {% endfor %}
+
+</div>
+</div>
+{% endblock %}
+
+<div class="order_column" id="second_container" aria-atomic="true">
+
+
+
+    </div>
+{% block sidebar %}
+    <div class="order_column" id="second_container">
+    <div id="order_title" class="section_title" aria-live="polite"> Notes on CSVs </div>
+        <div class="order_list_section" id="orders" aria-relevant="additions removals" aria-live="polite">
+
+            <div>
+                <p>
+                    If your content contains a comma (,) you must put that segment in between a set of quotation marks.  <br> <br> For example: <br>  date of birth, fullname, favcolor  <br> "13 October, 1993", "Dr. Brown, M.D", blue
+                </p>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+{% endblock %}

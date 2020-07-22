@@ -40,13 +40,13 @@ admin.site.register(User, UserAdmin)
 class ProductAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
-        inventory = list(Product.objects.exclude(active=False).values())
+        inventory = Product.objects.exclude(active=False).values()
         with open('snckcrt/static/data/refund.json', 'w') as teacherfile:
             teacherfile.write('[')
             for count, product in enumerate(inventory):
-                 json.dump(product, teacherfile, cls=DjangoJSONEncoder)
-                 if count < len(inventory)-1:
-                     teacherfile.write(', ')
+                json.dump(product, teacherfile, cls=DjangoJSONEncoder)
+                if count < len(inventory)-1:
+                    teacherfile.write(', ')
             teacherfile.write(']')
             teacherfile.close()
 

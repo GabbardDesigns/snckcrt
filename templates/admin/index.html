@@ -3,12 +3,6 @@
 
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}">{% endblock %}
 
-{% block coltype %}colMS{% endblock %}
-
-{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
-
-{% block breadcrumbs %}{% endblock %}
-
 {% block content %}
 <div class="main-container">
 
@@ -20,35 +14,70 @@
             {% for app in app_list %}
 
                 {% for model in app.models %}
-                    <div style="padding-top:5vh; width: 15vw; padding-right:3vw">
-                    <h1 style="font-weight: bolder">{{model.name}}</h1>
-                    {% if model.add_url %}
-                        <div class="product" onClick="location.href='{{ model.add_url }}'" >
-                                <div class="title noselect"> Add New </div>
-                                <div class="image_line noselect"> <img src="{% static "/images/cpanel/edit_userCS.png" %}"> </div>
-                                <div class="price noselect"> {{model.name}} </div>
-                        </div>
-                    {% endif %}
 
-                    {% if model.admin_url %}
-                        {% if model.view_only %}
-                        <div class="product" onClick="location.href='{{ model.admin_url }}'" >
-                            <div class="title noselect"> View  </div>
-                            <div class="image_line noselect"> <img src="{% static "/images/cpanel/edit_userCS.png" %}"> </div>
-                            <div class="price noselect"> {{model.name}} </div>
-                        </div>
-                        {% else %}
-                        <div class="product" onClick="location.href='{{ model.admin_url }}'" >
-                            <div class="title noselect"> View/Edit  </div>
-                            <div class="image_line noselect"> <img src="{% static "/images/cpanel/edit_userCS.png" %}"> </div>
-                            <div class="price noselect"> {{model.name}} </div>
-                        </div>
-                        {% endif %}
+
+                    {% if model.name == 'Groups' %}
+
+
+
                     {% else %}
-                        &nbsp;
+                        <div style="padding-top:5vh; width: 15vw; padding-right:3vw; float: left">
+                        <h1 style="font-weight: bolder">{{model.name}}</h1>
+                        {% if model.add_url %}
+                            <div class="product" onClick="location.href='{{ model.add_url }}'" >
+                                    <div class="title noselect"> Add New </div>
+                                    <div class="image_line noselect"> <img src="
+                                        {% if model.name == 'Products' %}
+                                            {% static "/images/cpanel/add_productCS.png" %}
+                                        {% else %}
+                                            {% static "/images/cpanel/add_userCS.png" %}
+                                        {% endif %}
+                                    "> </div>
+                                    <div class="price noselect"> {{model.name}} </div>
+                            </div>
+                        {% endif %}
+
+                        {% if model.admin_url %}
+                            {% if model.view_only %}
+                                <div class="product" onClick="location.href='{{ model.admin_url }}'" >
+                                    <div class="title noselect"> View  </div>
+                                    <div class="image_line noselect"> <img src="
+                                        {% if model.name == 'Products' %}
+                                            {% static "/images/cpanel/edit_productCS.png" %}
+                                        {% else %}
+                                            {% static "/images/cpanel/edit_userCS.png" %}
+                                        {% endif %}
+                                    "> </div>
+                                    <div class="price noselect"> {{model.name}} </div>
+                                </div>
+
+                            {% else %}
+                                <div class="product" onClick="location.href='{{ model.admin_url }}'" >
+                                    <div class="title noselect"> View/Edit  </div>
+                                    <div class="image_line noselect"> <img src="
+                                        {% if model.name == 'Products' %}
+                                            {% static "/images/cpanel/edit_productCS.png" %}
+                                        {% else %}
+                                            {% static "/images/cpanel/edit_userCS.png" %}
+                                        {% endif %}
+                                    "> </div>
+                                    <div class="price noselect"> {{model.name}} </div>
+                                </div>
+                            {% endif %}
+
+                            {% if model.name == 'Products' %}
+                                <div class="product" onClick="location.href='products/upload-csv/'" >
+                                    <div class="title noselect"> Upload  </div>
+                                    <div class="image_line noselect"> <img src="{% static "/images/cpanel/upload_productCS.png" %}"> </div>
+                                    <div class="price noselect"> {{model.name}} </div>
+                                </div>
+                            {% endif %}
+                            &nbsp;
+                        {% endif %}
+                        </div>
                     {% endif %}
 
-                    </div>
+
                 {% endfor %}
 
 

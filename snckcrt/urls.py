@@ -21,7 +21,7 @@ from django.conf.urls import include
 from django.conf.urls.static import static
 
 from pages.views import home_view, contact_view, about_view, cpanel_view
-from products.views import product_select_items_view
+from products.views import product_select_items_view, product_upload
 
 
 urlpatterns = [
@@ -33,7 +33,7 @@ urlpatterns = [
     path('inventory/', product_select_items_view, name='inventory'),
     path('product/', include('products.urls')),
     path('cpanel/', cpanel_view, name="control panel"),
-
+    path('admin/products/upload-csv/', product_upload, name="product_upload"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
