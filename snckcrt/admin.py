@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from products.views import get_inventory
 from django.contrib import admin
+from django.utils.html import format_html
 
 class ArticleAdmin(admin.ModelAdmin):
 
@@ -34,5 +35,4 @@ class ArticleAdmin(admin.ModelAdmin):
         else:
             # Otherwise, use default behavior
             return super().response_post_save_change(request, obj)
-
 

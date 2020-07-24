@@ -25,7 +25,6 @@ from products.views import product_select_items_view, product_upload
 
 urlpatterns = [
     path('', home_view, name='home'),
-    # path('myadmin/', admin_site.urls),
     path('admin/', admin.site.urls),
     path('homes/', home_view, name='home'),
     path('about/', about_view, name='about'),

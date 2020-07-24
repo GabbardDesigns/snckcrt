@@ -308,7 +308,7 @@ button.button.disable {
   color: lightslategrey;
 }
 
-button.new {
+button.neworder {
   background-color: #5cb85c;
 }
 
@@ -680,7 +680,7 @@ REFUND SCREEN
   text-decoration: underline;
 }
 
-.modal_message button.new {
+.modal_message button.neworder {
   background-color: #5cb85c;
   max-width: 50%;
   margin: 15px 0px;
@@ -1091,3 +1091,86 @@ min-height: unset !important;
   padding:10px;
 }
 
+button{
+  cursor: pointer;
+  box-shadow: 0 -15px 20px -10px rgba(0, 0, 0, 0.15) inset;
+}
+button:hover{
+  transform: scale(0.95, 0.95);
+  filter: saturate(200%)
+}
+
+button:hover > div {
+
+    }
+
+.product, .coin, .dollar {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    margin: 0.5vh;
+    max-height: 18vh;
+    justify-content: space-evenly;
+    background-clip: border-box;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    box-shadow: 0 -15px 20px -10px rgba(0, 0, 0, 0.15) inset;
+    border: 1pt solid #ccc;
+}
+
+.product:active, .coin:active, .dollar:active {
+filter:grayscale(80%);
+}
+
+.flex-filters ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.flex-filters li {
+  float: left;
+}
+
+.flex-filters li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+
+
+}
+
+.flex-filters li a:hover {
+  background-color: #111111;
+}
+
+.order_column #changelist-filter li.selected a{
+  color: #222;
+}
+
+.order_column #changelist-filter li.selected {
+    border-left: unset;
+    margin-left: unset;
+    padding-left: unset;
+    box-sizing: border-box;
+    box-shadow: inset 0px 0px 0px 5px grey;
+    background-color: #ccc;
+}
+.inventory_list_section {
+  align-content: start;
+  padding-right: 1.6vh;
+}
+
+@media (orientation: landscape) {
+  .inventory_list_section h1 {
+    padding-top: 2vh;
+    padding-bottom:2vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    margin: unset;
+    font-size:3vh;
+  }
+}

@@ -1,12 +1,53 @@
 {% extends "admin/base_site.html" %}
 {% load i18n %}
 
-{% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></div>{% endblock %}
+{% block breadcrumbs %}<div class="breadcrumbs"><a href="/">{% trans 'Home' %}</a></div>{% endblock %}
 
 {% block content %}
+<div class="main-container">
 
-<p>{% trans "Thanks for spending some quality time with the Web site today." %}</p>
+<div id="first_container" class="inv_column">
 
-<p><a href="{% url 'admin:index' %}">{% trans 'Log in again' %}</a></p>
+    <div id="inventory_title" aria-live="polite" class="section_title">Login</div>
+    <div id="inventory" aria-live="polite" class="inventory_list_section">
+
+    <div id="content-main">
+
+       <p>{% trans "Thanks for spending some quality time with Snackcart Inventory Management suite.   Please have a great day." %}</p>
+
+       <p>{% trans "If you want to log in again, please use the form on the right." %}</p>
+
+        <p>{% trans "You will be redirected to the main application page in 30 seconds." %}</p>
+
+    </div>
+
+</div>
+<div id="inventoryBottom" aria-live="polite"></div>
+</div>
+{% endblock %}
+
+
+{% block sidebar %}
+    <div class="order_column" id="second_container">
+    <div id="order_title" class="section_title" aria-live="polite">  </div>
+        <div class="order_list_section" id="orders" aria-relevant="additions removals" aria-live="polite">
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block messages %}
+
+
+{% endblock %}
+
+
+{% block extra_scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        setTimeout(function(){window.location='/'}, 30000)
+</script>
 
 {% endblock %}

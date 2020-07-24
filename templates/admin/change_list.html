@@ -47,9 +47,7 @@
 
     {% block object-tools %}
         <h1 class="object-tools">
-          {% block object-tools-items %}
-            {% change_list_object_tools %}
-          {% endblock %}
+                Add {{ opts.model_name|title }}
         </h1>
     {% endblock %}
     {% if cl.formset and cl.formset.errors %}

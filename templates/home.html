@@ -19,3 +19,72 @@
 {% block order_list_section %}
 <div class="order_list_section" id="orders" aria-relevant="additions removals" aria-live="polite"></div>
 {% endblock %}
+
+{% block modalPopups %}
+
+  <!--#ModalPopUps-->
+  <!-- Overlay and Modal sections are not displayed initially, triggered by functions when order is completed or cleared (newOrder()) -->
+  <section id="ModalPopUps">
+    <div id="overlay"></div>
+
+    <div id="modal">
+      <div id="modal_X" onclick="closeModal()">&times;</div>
+
+      <!--Modal content for alerting an order is complete-->
+      <div class="modal_message" id="order_Completed">
+        <h1>Congratulations!</h1>
+        <p class="modalText"> You completed the order. </p>
+        <p class="modalText"> Please start a new order.</p>
+        <button class="button neworder" onclick="clearOrder()">New Order</button><br />
+        <a href="#" onclick="clearPermissions()">Do not show again.</a>
+      </div>
+      <!--/#order_Completed-->
+
+      <!--Modal content for alert when creating a new order-->
+      <div class="modal_message" id="new_Order">
+        <h1>Clear current order and start a new one?</h1>
+        <p class="modalText modalButtons">
+          <button class="clearBut yesBut" onclick="clearOrder()">Yes</button>
+          <button class="clearBut noBut" onclick="closeModal()">No</button>
+          <br /><br />
+          <a href="#" onclick="clearPermissions()">Clear order and do not show again</a>.
+        </p>
+      </div>
+      <!--/#new_Order-->
+
+      <!--Modal content to alert need to issue refund-->
+      <div class="modal_message" id="issue_Refund">
+        <h1>Time to issue a refund. </h1>
+        <p>You can click either Issue Refund buttons to issue the refund.</p>
+        <p class="modalText modalButtons">
+          <button class="clearBut RefundBut" onclick="clickToRefund()">Issue Refund</button>
+          <br /><br />
+          <a href="#" onclick="clearToRefund()">Close this message and do not show again</a>.
+        </p>
+      </div>
+      <!--/#new_Order-->
+
+    </div>
+  </section>
+  <!--/#ModalPopUps-->
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        var previous = null;
+        var current = null;
+        setInterval(function() {
+            $.getJSON("/static/data/refund.json", function(json) {
+                current = JSON.stringify(json);
+                if (previous && current && previous !== current) {
+                    console.log('refresh');
+                    location.reload();
+                }
+
+                previous = current;
+            });
+        }, 2000);
+</script>
+
+{% endblock %}

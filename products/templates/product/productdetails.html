@@ -1,46 +1,49 @@
-{#{% extends 'base.html' %}#}
+{% extends 'base.html' %}
+{% load static %}
 
-{% block content_header %}
-    <script>
-    const getTestInv = () => {
-  let request = new XMLHttpRequest();
-  request.open("GET", "ajax/dump/", true);
-  request.onload = function() {
-    if (request.status >= 200 && request.status < 400) {
-      let data = JSON.parse(request.responseText);
-      data.forEach(function(val, key) {
-        paymentOptions_Array.push([
-          key,
-          val.title,
-          // val.imagepath,
-          val.price,
-          // val.type,
-          // val.value,
-          // val.alt
-        ]);
-      });
-    }
-    else{
-        console.log(request.status)
-    }
-  };
-  request.send();
-}
-getTestInv();
-    </script>
-    {{product.title}}
+{% block extra_scripts %}
+{#    <script>#}
+{#    const getTestInv = () => {#}
+{#      let request = new XMLHttpRequest();#}
+{#      request.open("GET", "ajax/dump/", true);#}
+{#      request.onload = function() {#}
+{#        if (request.status >= 200 && request.status < 400) {#}
+{#          let data = JSON.parse(request.responseText);#}
+{#          data.forEach(function(val, key) {#}
+{#            paymentOptions_Array.push([#}
+{#              key,#}
+{#              val.title,#}
+{#              // val.imagepath,#}
+{#              val.price,#}
+{#              // val.type,#}
+{#              // val.value,#}
+{#              // val.alt#}
+{#            ]);#}
+{#          });#}
+{#        }#}
+{#        else{#}
+{#            console.log(request.status)#}
+{#        }#}
+{#      };#}
+{#      request.send();#}
+{#    }#}
+{#getTestInv();#}
+{#    </script>#}
+
 {% endblock %}
 
-{% block inventory_area %}
-Product Details
+{% block inventory_area_title %}Product Details{% endblock %}
 
+{% block inventory_area %}
+    {{product.title}}
 <p>
  <h3>Description</h3>
   {% if product.description %}
    {{product.description}}
   {% else %}
-   Coming Soon.
+    <img src="{{ product.url }}" width="100" height="100" />
   {% endif %}
+
 <h3>Price</h3>
   {{product.price}}
 

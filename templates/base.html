@@ -12,18 +12,20 @@
 
 <body>
 
-      <header class="main-header">
+<header class="main-header">
       <div class="icon-bar" id="flex-menu">
         <div class="flex-login">
-          <a href="/admin/" > Log In</a>
+          <a href="/admin/" >
+              {% if user.is_active and user.is_staff %} Admin View
+              {%  else %}Log In
+              {% endif %}
+          </a>
         </div>
         <div class="flex-help">
           <a href="#" onclick="help()"><i class="fa fa-question-circle"></i></a>
         </div>
       </div>
     </header>
-
-
 
   <!-- IF NO JAVASCRIPT, NO APPLICATION :( -->
   <noscript>
@@ -43,51 +45,9 @@
   </section>
   <!--/#CHANGE ORIENTATION-->
 
-  <!--#ModalPopUps-->
-  <!-- Overlay and Modal sections are not displayed initially, triggered by functions when order is completed or cleared (newOrder()) -->
-  <section id="ModalPopUps">
-    <div id="overlay"></div>
+{% block modalPopups %}
 
-    <div id="modal">
-      <div id="modal_X" onclick="closeModal()">&times;</div>
-
-      <!--Modal content for alerting an order is complete-->
-      <div class="modal_message" id="order_Completed">
-        <h1>Congratulations!</h1>
-        <p class="modalText"> You completed the order. </p>
-        <p class="modalText"> Please start a new order.</p>
-        <button class="button new" onclick="clearOrder()">New Order</button><br />
-        <a href="#" onclick="clearPermissions()">Do not show again.</a>
-      </div>
-      <!--/#order_Completed-->
-
-      <!--Modal content for alert when creating a new order-->
-      <div class="modal_message" id="new_Order">
-        <h1>Clear current order and start a new one?</h1>
-        <p class="modalText modalButtons">
-          <button class="clearBut yesBut" onclick="clearOrder()">Yes</button>
-          <button class="clearBut noBut" onclick="closeModal()">No</button>
-          <br /><br />
-          <a href="#" onclick="clearPermissions()">Clear order and do not show again</a>.
-        </p>
-      </div>
-      <!--/#new_Order-->
-
-      <!--Modal content to alert need to issue refund-->
-      <div class="modal_message" id="issue_Refund">
-        <h1>Time to issue a refund. </h1>
-        <p>You can click either Issue Refund buttons to issue the refund.</p>
-        <p class="modalText modalButtons">
-          <button class="clearBut RefundBut" onclick="clickToRefund()">Issue Refund</button>
-          <br /><br />
-          <a href="#" onclick="clearToRefund()">Close this message and do not show again</a>.
-        </p>
-      </div>
-      <!--/#new_Order-->
-
-    </div>
-  </section>
-  <!--/#ModalPopUps-->
+{% endblock %}
 
 
   <!-- main-container -->
@@ -140,28 +100,16 @@
 
   </main>
   <!--/main-container-->
-  <script src="{% static 'scripts/core.js' %}"></script>
+<script src="{% static 'scripts/core.js' %}"></script>
+
 
 </body>
+
+{% block extra_scripts %}
+
+{% endblock %}
 
 </html>
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-</head>
-
-
-<body id="generic" class="">
-
-<!--    {% include 'navbar.html' %} -->
-
-
-    <div class="copy-banner">
-
-    </div>
-
-</body>

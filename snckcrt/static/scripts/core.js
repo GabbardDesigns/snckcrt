@@ -45,6 +45,7 @@ const getPaymentOptions = () => {
 }
 getPaymentOptions();
 
+
 // Read JSON Datafile for starter inventory and define inventory section in the HTML
 const importInventory = () => {
   let request = new XMLHttpRequest();
@@ -326,7 +327,7 @@ const orderStatus = () => {
     getById("payOptions").classList.add("disable");
     getById("paidIn").classList.add("disable");
     buttonswitch =
-      '<button class="button new" onclick="clearOrder()">New Order</button> <button aria-live="polite" class="button disable" onclick="refundView()">Issue Refund</button> <button class="button disable" onclick="paymentView()">Pay Now</button>';
+      '<button class="button neworder" onclick="clearOrder()">New Order</button> <button aria-live="polite" class="button disable" onclick="refundView()">Issue Refund</button> <button class="button disable" onclick="paymentView()">Pay Now</button>';
 
     if (modalPermissions) {
       getById("order_Completed").style.display = "block";
@@ -536,7 +537,7 @@ const issueRefund = stillDue => {
       getById(refundId).classList.add("disable");
     }
     buttonswitch =
-      '<button class="button new" onclick="clearOrder()">New Order</button> <button class="button disable" onclick="refundView()">Issue Refund</button> <button class="button disable" onclick="paymentView()">Pay Now</button>';
+      '<button class="button neworder" onclick="clearOrder()">New Order</button> <button class="button disable" onclick="refundView()">Issue Refund</button> <button class="button disable" onclick="paymentView()">Pay Now</button>';
     getById("paybutton").innerHTML = buttonswitch;
     if (modalPermissions) {
       getById("order_Completed").style.display = "block";
