@@ -2,9 +2,6 @@ from django.db import models
 from django.utils.safestring import mark_safe
 # Create your models here.
 
-
-
-
 class Product(models.Model):
     title = models.CharField("Product Name", max_length=120, blank=False)
     price = models.DecimalField("Price per Unit", blank=False, max_digits=8, decimal_places=2)
@@ -23,3 +20,5 @@ class Product(models.Model):
          return mark_safe('<img src="{}" width="100" height="100" />'.format(self.url()))
 
     image_tag.short_description = 'Image'
+
+

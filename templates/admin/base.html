@@ -1,17 +1,18 @@
+
 {% load i18n static %}<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
-<title>{% block title %}{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">
+    <title>{% block title %}{% endblock %}</title>
+{#<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">#}
 <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
 {% block extrastyle %}{% endblock %}
-{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}">{% endif %}
+{#{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}">{% endif %}#}
 {% block extrahead %}{% endblock %}
 {% block responsive %}
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive.css" %}">
-    {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive_rtl.css" %}">{% endif %}
+{#    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">#}
+{#    <link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive.css" %}">#}
+{#    {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive_rtl.css" %}">{% endif %}#}
 {% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE">{% endblock %}
 </head>
@@ -25,71 +26,99 @@
 
     {% if not is_popup %}
     <!-- Header -->
-    <div id="header">
-        <div id="branding">
-        {% block branding %}{% endblock %}
-        </div>
-        {% block usertools %}
-        {% if has_permission %}
-        <div id="user-tools">
-            {% block welcome-msg %}
-                {% trans 'Welcome,' %}
-                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
-            {% endblock %}
-            {% block userlinks %}
-                {% if site_url %}
-                    <a href="{{ site_url }}">{% trans 'View site' %}</a> /
-                {% endif %}
-                {% if user.is_active and user.is_staff %}
-                    {% url 'django-admindocs-docroot' as docsroot %}
-                    {% if docsroot %}
-                        <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+    <div id="header" class="main-header">
+        <div id="flex-menu" class="icon-bar">
+          <div class="flex-nav-links-left">
+              {% block breadcrumbs %}
+                    <div class="breadcrumbs">
+                        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+                        {% if title %} &rsaquo; {{ title }}{% endif %}
+                    </div>
+              {% endblock %}
+          </div>
+          <div class="flex-nav-links-right">
+{% block usertools %}
+            {% if user.is_active and user.is_staff %}
+            <div id="user-tools flex-login">
+                {% block userlinks %}
+                    {% if site_url %}
+                        <a href="{{ site_url }}">{% trans 'View site' %}</a> /
                     {% endif %}
-                {% endif %}
-                {% if user.has_usable_password %}
-                <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
-                {% endif %}
-                <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
-            {% endblock %}
-        
+                    {% if user.is_active and user.is_staff %}
+                        {% url 'django-admindocs-docroot' as docsroot %}
+                        {% if docsroot %}
+                            <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+                        {% endif %}
+                    {% endif %}
+                    {% if user.has_usable_password %}
+                    <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+                    {% endif %}
+                    <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+                {% endblock %}
+
+            </div>
         </div>
         {% endif %}
         {% endblock %}
+          </div>
+
+
         {% block nav-global %}{% endblock %}
     </div>
     <!-- END Header -->
-    {% block breadcrumbs %}
-    <div class="breadcrumbs">
-    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-    {% if title %} &rsaquo; {{ title }}{% endif %}
-    </div>
-    {% endblock %}
+
     {% endif %}
 
-    {% block messages %}
-        {% if messages %}
-        <ul class="messagelist">{% for message in messages %}
-          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
-        {% endfor %}</ul>
-        {% endif %}
-    {% endblock messages %}
-
     <!-- Content -->
-    <div id="content" class="{% block coltype %}colM{% endblock %}">
         {% block pretitle %}{% endblock %}
-        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+{#        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}#}
         {% block content %}
         {% block object-tools %}{% endblock %}
         {{ content }}
         {% endblock %}
         {% block sidebar %}{% endblock %}
-        <br class="clear">
+
+{% block footer %}
+    <!-- Start of redrawable .pay_section (bottom in all orientations) -->
+    <div class="pay_section admin_pay" style="align-items:start">
+{#    <div id="content" class="{% block coltype %}colM{% endblock %}">#}
+     {% block messages %}
+         <h1 style="padding-left:2vw; padding-top: 2vh">Message Center</h1>
+        {% if messages %}
+            <div class="messagebox">
+            <ul class="messagelist">
+                {% for message in messages %}
+                    <li style="background-color: lightpink; list-style: none; padding:10px"
+                        {% if message.tags %}
+                            class="{{ message.tags }}"
+                        {% endif %}>
+                            {{ message|capfirst }}
+                    </li>
+                {% endfor %}
+            </ul>
+            </div>
+        {% endif %}
+     {% endblock messages %}
+    </div>
+
+    <!-- /#pay_section-->
+
+    <!-- Static footer section -->
+    <footer class="main-footer" role="contentinfo">
+      <div class="footer-inner">
+        <span>&copy; 2019 GabbardDesigns</span>
+      </div>
+    </footer>
+{% endblock %}
+
     </div>
     <!-- END Content -->
 
-    {% block footer %}<div id="footer"></div>{% endblock %}
+
+</div>
 </div>
 <!-- END Container -->
 
 </body>
 </html>
+

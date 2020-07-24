@@ -4,61 +4,34 @@
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}">{% endblock %}
 
 {% block content %}
-<div class="main-container">
+    <div class="main-container product_upload" >
 
-<div id="first_container" class="inv_column">
+    <div id="first_container" class="inv_column">
 
-    <div id="inventory_title" aria-live="polite" class="section_title">Upload Products Via CSV file</div>
-    <div id="inventory" aria-live="polite" class="inventory_list_section">
+        <div id="inventory_title" aria-live="polite" class="section_title">Upload Products Via CSV file</div>
+        <div id="inventory" aria-live="polite" class="inventory_list_section">
 
-    {% if messages %}
-        {% for message in messages %}
-            <div>
-                <strong>{{message|safe}}</strong>
-            </div>
-        {% endfor %}
-    {% else %}
+
+        <form id="login-form" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="file1"> Please select a file to upload:</label>
+            <input type="file" id="file1" name="file">
+            <small>Only accepts CSV files</small>
+            <button type="submit">Upload</button>
+        </form>
+
         <div>
-        <p>Order of the CSV should be: title,price,imagepath,alt,active. </p>
+            <p>Order of the CSV should be: title,price,imagepath,alt,active. </p>
 
-        <h2>Explaination of Fields</h2>
+               <p>
+                    If your content contains a comma (,) you must put that segment in between a set of quotation marks.  <br> <br> For example: <br>  date of birth, fullname, favcolor  <br> "13 October, 1993", "Dr. Brown, M.D", blue
+               </p>
 
-            <p><strong>Title</strong></br>
-                Textfield, no more than 20 characters
-            </p>
 
-            <p>
-                <strong>Price:</strong> </br>
-                Must be a number
-            </p>
+         </div>
 
-            <p>
-                <strong>imagepath</strong></br>
-                You will have to edit the items to upload the images, so this can be anything but blank
-            </p>
-            <p>
-                <strong>alt:</strong></br>
-                Free text with a 30 character limit
-            </p>
-            <p><strong>active:</strong></br>
-                Boolean value and must be True or False
-            </p>
-        </div>
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="file1"> Upload a file</label>
-        <input type="file" id="file1" name="file">
-        <small>Only accepts CSV files</small>
-        <button type="submit">Upload</button>
-    </form>
-    {% endif %}
-
-    {% for product in products %}
-    {{product.name}}
-    {% endfor %}
-
-</div>
-</div>
+    </div>
+    </div>
 {% endblock %}
 
 <div class="order_column" id="second_container" aria-atomic="true">
@@ -72,9 +45,15 @@
         <div class="order_list_section" id="orders" aria-relevant="additions removals" aria-live="polite">
 
             <div>
-                <p>
-                    If your content contains a comma (,) you must put that segment in between a set of quotation marks.  <br> <br> For example: <br>  date of birth, fullname, favcolor  <br> "13 October, 1993", "Dr. Brown, M.D", blue
-                </p>
+
+                <h2>Explanation of Fields</h2>
+
+                <p><span class="explanation">Title:</span> Textfield, no more than 20 characters</p>
+                <p><span class="explanation">Price:</span> Must be a number</p>
+                <p><span class="explanation">imagepath</span> You will have to edit the items to upload the images, so this can be anything but blank</p>
+                <p><span class="explanation">alt:</span> Free text with a 30 character limit</p>
+                <p><span class="explanation">active:</span> Boolean value and must be True or False</p>
+
             </div>
 
         </div>
@@ -82,5 +61,21 @@
 
 
     </div>
-</div>
+
+
+{% endblock %}
+{% block messages %}
+    <h1 style="padding-left:2vw; padding-top: 2vh">Message Center</h1>
+      {% if messages %}
+        <div class="messagebox">
+     <ul class="messagelist">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                <strong>{{message|safe}}</strong>
+            </li>
+        {% endfor %}
+    {% endif %}
+            </ul>
+    </div>
+
 {% endblock %}

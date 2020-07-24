@@ -31,12 +31,6 @@ C
 snckcrt/wsgi.py,b\4\b4bcf9149640e98e1b94bf6af69932787845023f
 >
 pages/admin.py,a\a\aad808ac5e60d45c69afac843a33489921ce4226
-M
-users/templates/userbase.html,7\c\7cd49be137038d2c7d3767a1b8421bc8b811e4ec
-=
-users/urls.py,7\e\7ebb6dc32a2768a7e73ce1c83409f9c85bd4ad6a
->
-users/views.py,5\f\5fc54a09665485d90807a8e72925d27743a0db75
 [
 +products/templates/product/editproduct.html,2\5\253724d0c1d37503f9f273dcee78487394e23fef
 ?
@@ -65,3 +59,13 @@ S
 #products/templates/selectItems.html,5\3\53f19a0424bec5093fa97550f3744a7eed208a85
 R
 "snckcrt/static/data/inventory.json,7\1\716abd1eb965995a66d59885964cff28765e4a9b
+V
+&products/templates/product_upload.html,b\0\b0fa81c19d1555e3e4136e83b8c337fb71d7c297
+J
+templates/admin/index.html,1\c\1c82ee135a55bd7e4342f60241c7748e6d362f79
+@
+snckcrt/admin.py,6\8\6843575ec42178ec3c27e377a05063e2ddb2f31a
+P
+ templates/admin/change_list.html,6\6\6685238f9f661cde2eaed6aad79e3ddca5d54130
+@
+snckcrt/utils.py,3\f\3f15116b209df489ae34cea753cb0438e0846d4f

@@ -1,4 +1,4 @@
-{% extends "admin/base_site.html" %}
+{% extends "admin/base.html" %}
 {% load i18n admin_urls static admin_list %}
 
 {% block extrastyle %}
@@ -38,13 +38,19 @@
 {% block coltype %}flex{% endblock %}
 
 {% block content %}
-  <div id="content-main">
+<div class="main-container">
+
+<div id="first_container" class="inv_column">
+
+    <div id="inventory_title" aria-live="polite" class="section_title">Database Management</div>
+    <div id="inventory" aria-live="polite" class="inventory_list_section">
+
     {% block object-tools %}
-        <ul class="object-tools">
+        <h1 class="object-tools">
           {% block object-tools-items %}
             {% change_list_object_tools %}
           {% endblock %}
-        </ul>
+        </h1>
     {% endblock %}
     {% if cl.formset and cl.formset.errors %}
         <p class="errornote">
@@ -56,14 +62,7 @@
       {% block search %}{% search_form cl %}{% endblock %}
       {% block date_hierarchy %}{% if cl.date_hierarchy %}{% date_hierarchy cl %}{% endif %}{% endblock %}
 
-      {% block filters %}
-        {% if cl.has_filters %}
-          <div id="changelist-filter">
-            <h2>{% trans 'Filter' %}</h2>
-            {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
-          </div>
-        {% endif %}
-      {% endblock %}
+
 
       <form id="changelist-form" method="post"{% if cl.formset and cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>{% csrf_token %}
       {% if cl.formset %}
@@ -77,6 +76,27 @@
       {% endblock %}
       {% block pagination %}{% pagination cl %}{% endblock %}
       </form>
+       </div>
+
+        </div>
+<div id="inventoryBottom" aria-live="polite"></div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class="order_column" id="second_container">
+    <div id="order_title" class="section_title" aria-live="polite"> Filters </div>
+        <div class="order_list_section" id="orders" aria-relevant="additions removals" aria-live="polite">
+            {% block filters %}
+                {% if cl.has_filters %}
+                  <div id="changelist-filter">
+                    {% for spec in cl.filter_specs %}<div class="flex-filters">
+                    {% admin_list_filter cl spec %}</div>{% endfor %}
+                  </div>
+                {% endif %}
+           {% endblock %}
+        </div>
+
     </div>
-  </div>
+
 {% endblock %}

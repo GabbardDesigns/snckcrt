@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third-party apps
+    'adminplus',
     'sorl.thumbnail',
 
     # my apps

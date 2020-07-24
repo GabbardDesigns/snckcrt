@@ -3,7 +3,6 @@ from django.http import HttpResponseRedirect
 from products.views import get_inventory
 from django.contrib import admin
 
-
 class ArticleAdmin(admin.ModelAdmin):
 
     def render_change_form(self, request, context, *args, **kwargs):
@@ -35,3 +34,5 @@ class ArticleAdmin(admin.ModelAdmin):
         else:
             # Otherwise, use default behavior
             return super().response_post_save_change(request, obj)
+
+

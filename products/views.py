@@ -47,14 +47,25 @@ def product_upload(request):
     if request.method == "GET":
         return render(request, template, prompt)
 
-    csv_file = request.FILES['file']
+    try:
+        csv_file = request.FILES['file']
+    except:
+        messages.error(request, 'No file attached', 'Failed')
+        return render(request, template, prompt)
 
-    # let's check if it is a csv file
+    #check if it is a csv file
     if not csv_file.name.endswith('.csv'):
-        messages.error(request, 'THIS IS NOT A CSV FILE')
+        messages.error(request, 'THIS IS NOT A CSV FILE', 'Failed')
+        return render(request, template, prompt)
 
-    data_set = csv_file.read().decode('UTF-8')
+    try:
+        data_set = csv_file.read().decode('UTF-8')
+    except:
+        messages.error(request, 'Please check the file, import error.', 'Failed')
+        return render(request, template, prompt)
 
+    prodcount = 0
+    plural= 's'
     # setup a stream which is when we loop through each line we are able to handle a data in a stream
     io_string = io.StringIO(data_set)
     next(io_string)
@@ -64,7 +75,13 @@ def product_upload(request):
             price=column[1],
             imagepath=column[2],
             alt=column[3],
-            active=column[4]
+            active=column[4].title()
         )
+        prodcount += 1
+    if prodcount == 1:
+        plural = ''
+
     context = {}
+    messages.success(request, 'File uploaded successfully.', 'Success')
+    messages.success(request, f'{prodcount} product{plural} added.', 'Success')
     return render(request, template, context)
