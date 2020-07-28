@@ -2,6 +2,16 @@
 {% load i18n static %}
 
 {% block content %}
+<style>
+    #orders p {
+        padding-right: 0.5em;
+        padding-left: 0.5em;
+        line-height: 2em;
+        font-size: 2vh;
+        clear: both;
+        color: #333;
+} </style>
+
 <div class="main-container">
 
 <div id="first_container" class="inv_column">
@@ -53,7 +63,7 @@
     <div class="order_column" id="second_container">
     <div id="order_title" class="section_title" aria-live="polite"> Login Instructions </div>
         <div class="order_list_section" id="orders" aria-relevant="additions removals" aria-live="polite">
-
+            <p>Please enter your username and password.</p>
         </div>
 
     </div>

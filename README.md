@@ -3,13 +3,34 @@
 
 Started 6/18/2020 
 
-A new version of Snackcart. 
+This is a the continuation of a program started 6 months ago done entirely in vanilla javascript.  This new version is done using Python for the backend, through the use of Django and SQLite.  
 
 Built in Python 3.8 using Django.
 Inventory will be editable.
 
-FROM SNACKCART 1.0 README
+Read the scoping and requirements in the SNACKCART 1.0 README: https://github.com/GabbardDesigns/snckcrt/blob/master/scoping.md
 
+his version of Snackcart has the following enhancements:
+
+###### Backend Changes
+- Added an administrative backend to allow management of users (essentially allow more backend users) and management of inventory.
+
+- Added the ability to modify the default list of items in the inventory:  
+   - Add Items Manually
+   - Edit Items
+   - Upload Items via CSV
+
+All changes are reflected instantly in the inventory through a combination of rewriting the JSON file read on the front-end and scheudled checks for changes in file vs database.
+
+######Front-end Changes
+- Navigation changes dynamically based on whether user is logged in
+- Added ability to view details about the items in inventory through the use of a view inventory button on the homepage (in the footer).
+
+#####Technical Summary
+  - Python 3.8
+  - Django 3.0.8
+
+#####How to Make the Project Work
 1. Setup a virtual environment (python -m venv /path/to/new/virtual/environment)
 2. Activate the environment in command prompt or terminal ($ source <venv>/bin/activate or C:\> <venv>\Scripts\activate.bat)
 3. Clone the GitHub project in your local directory with command git clone https://github.com/GabbardDesigns/snckcrt.git
@@ -22,30 +43,30 @@ FROM SNACKCART 1.0 README
 9. Access the front-end web interface at http://127.0.0.1:8000/ 
 10. Access the admin interface at http://127.0.0.1:8000/admin
 
-Purpose
-     - Point of Sales (POS) system for a student run snack cart   
+Stock User Information
 
-Users 
-     - Children with developmental disabilities (limited reading and math skills)
+superuser
+  | username: super  | password: superuserpassword
 
-Functional Requirements
-     - Students must be able to click (touch) items to add them to the shopping order.  
-     - A total must be presented to students and be used to help them understand how much is needed to be paid.  
-     - There must be a way to reset the register once the transaction is completed. 
+school admin user (staff)
+  | username: school_admin  | password: QhZ6fb25TwkVyJV
 
-Nice to Have
-     - Pay options/Pay Aid - Graphical interface to track payment received and show students how much they still need to receive.
-     - Overpayment/Refund - The system should help students determine if change is needed and how much.  
+Test Files (download and reupload)
+- Sample good single record test file: test_files\single_upload.csv 
+- Sample good multi-record test file: test_files\multi_upload.csv
+- Sample bad record test file: test_files\bad_upload.csv
+- Sample bad file format test file: test_files\bad_upload.txt
 
-Design Considerations
-     - The intended use case for this solution is on a tablet or laptop in widescreen layout.  For this reason, portrait and phone configurations are a secondary consideration.
 
-Distribution
-     - The initial version will be a web-based application with a set inventory.  
+Testing Methodology
+Add 
+
+
+The Pythonic portions of this project are: 
+  - The entire backend
+  - The new view inventory button and subsequent pages on the front-end.
+  - Technically the front-end is fed from a Python function, but the actual functionality of the front-end is all JavaScript.  
 
 Future Improvements
+  - Move to or integrate React to allow for deployment on Android ecosystem. 
 
-The full version of this application will be deployed on Android and iOS mobile devices using react-native and react-fs.  This version will feature an admin interface that will allow users with the admin code (a set code initially, changeable within the admin interface) to:
-     - Add new inventory items
-     - Change the name, price, etc of items
-     - Manage the availability of inventory (by marking active or inactive)

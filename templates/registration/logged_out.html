@@ -4,18 +4,27 @@
 {% block breadcrumbs %}<div class="breadcrumbs"><a href="/">{% trans 'Home' %}</a></div>{% endblock %}
 
 {% block content %}
+<style>
+    #content-main p {
+        padding-right: 0.5em;
+        line-height: 2em;
+        font-size: 2vh;
+        clear: both;
+        color: #333;
+} </style>
+
 <div class="main-container">
 
 <div id="first_container" class="inv_column">
 
-    <div id="inventory_title" aria-live="polite" class="section_title">Login</div>
+    <div id="inventory_title" aria-live="polite" class="section_title">Thank You</div>
     <div id="inventory" aria-live="polite" class="inventory_list_section">
 
     <div id="content-main">
 
        <p>{% trans "Thanks for spending some quality time with Snackcart Inventory Management suite.   Please have a great day." %}</p>
 
-       <p>{% trans "If you want to log in again, please use the form on the right." %}</p>
+       <p>{% trans "If you want to log in again, please click <a href='/../admin/login/'>here</a>." %}</p>
 
         <p>{% trans "You will be redirected to the main application page in 30 seconds." %}</p>
 
@@ -31,6 +40,40 @@
     <div class="order_column" id="second_container">
     <div id="order_title" class="section_title" aria-live="polite">  </div>
         <div class="order_list_section" id="orders" aria-relevant="additions removals" aria-live="polite">
+ <div id="content-main">
+
+        {% if user.is_authenticated %}
+            <p class="errornote">
+                {% blocktrans trimmed %}
+                    You are authenticated as {{ username }}, but are not authorized to
+                    access this page. Would you like to login to a different account?
+                {% endblocktrans %}
+            </p>
+        {% endif %}
+
+        <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+              <div class="form-row">
+                {{ form.username.errors }}
+                {{ form.username.label_tag }} {{ form.username }}
+              </div>
+
+              <div class="form-row">
+                {{ form.password.errors }}
+                {{ form.password.label_tag }} {{ form.password }}
+                <input type="hidden" name="next" value="{{ next }}">
+              </div>
+          {% url 'admin_password_reset' as password_reset_url %}
+          {% if password_reset_url %}
+              <div class="password-reset-link">
+                  <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
+              </div>
+          {% endif %}
+          <div class="submit-row">
+                <label>&nbsp;</label><input type="submit" value="{% trans 'Log in' %}">
+          </div>
+        </form>
+
+    </div>
 
         </div>
 
