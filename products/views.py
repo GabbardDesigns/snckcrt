@@ -1,24 +1,26 @@
-import csv, io
+import csv, io, json
 from django.contrib import messages
 from django.shortcuts import render
 from .models import Product
+from django.core.serializers.json import DjangoJSONEncoder
 import logging
-from django.http import HttpResponse
 
 
 def product_select_items_view(request):
-    inventory = Product.objects.all()
+    inventory = Product.objects.order_by('title').exclude(active=False)
     context = {
         'inventory': inventory,
     }
     return render(request, 'selectItems.html', context)
 
+
 def product_detail_view(request, id):
     try:
-        prod_id = Product.objects.get(pk=id)
+        # inventory = Product.objects.order_by('title').exclude(active=False)
+        inventory = Product.objects.get(pk=id)
     except Product.DoesNotExist:
         raise Http404("Product not found")
-    return render(request, 'product/productdetails.html', {'product':prod_id})
+    return render(request, 'product/productdetails.html', {'inventory': inventory, 'id':id})
 
 
 def product_edit_view(request, id):
@@ -46,6 +48,7 @@ def product_upload(request):
                     ''',
         'product': data
               }
+
     # GET request returns the value of the data with the specified key.
     if request.method == "GET":
         return render(request, template, prompt)
@@ -56,20 +59,23 @@ def product_upload(request):
         messages.error(request, 'No file attached', 'Failed')
         return render(request, template, prompt)
 
-    #check if it is a csv file
+    # check if it is a csv file
     if not csv_file.name.endswith('.csv'):
         messages.error(request, 'THIS IS NOT A CSV FILE', 'Failed')
         return render(request, template, prompt)
 
+    # checks file for parsability based on our schema
     try:
         data_set = csv_file.read().decode('UTF-8')
     except:
         messages.error(request, 'Please check the file, import error.', 'Failed')
         return render(request, template, prompt)
 
+    # sets flag for plural text casing
     prodcount = 0
     plural= 's'
-    # setup a stream which is when we loop through each line we are able to handle a data in a stream
+
+    # sets up stream that loops through each line
     io_string = io.StringIO(data_set)
     next(io_string)
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
@@ -85,6 +91,22 @@ def product_upload(request):
         plural = ''
 
     context = {}
+
+    #returns success messages
     messages.success(request, 'File uploaded successfully.', 'Success')
     messages.success(request, f'{prodcount} product{plural} added.', 'Success')
+
+    # Force update of the json file for frontend
+    inventory = Product.objects.order_by('title').exclude(active=False).values()
+    with open('snckcrt/static/data/refund.json', 'w') as teacherfile:
+        teacherfile.write('[')
+        for count, product in enumerate(inventory):
+            json.dump(product, teacherfile, cls=DjangoJSONEncoder)
+
+            if count < len(inventory) - 1:
+                teacherfile.write(', ')
+        teacherfile.write(']')
+        teacherfile.close()
+
     return render(request, template, context)
+

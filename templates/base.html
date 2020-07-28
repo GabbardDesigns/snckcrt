@@ -77,6 +77,7 @@
 
     <!-- Start of redrawable .pay_section (bottom in all orientations) -->
     <div class="pay_section">
+        {% block pay_section %}
       <div id="payHolder" class="total_section" aria-live="assertive" aria-atomic="true">
         <div aria-live="polite" class="total_label" id="order_total_label">Amount Due:</div>
         <div aria-live="polite" class="total_amount" id="order_total">$ 0.00</div>
@@ -87,6 +88,7 @@
         <button class="button disable" onclick="paymentView()">Issue Refund</button>
         <button class="button disable" onclick="paymentView()">Pay Now</button>
       </div>
+        {% endblock %}
     </div>
     <!-- /#pay_section-->
 
@@ -94,14 +96,19 @@
     <footer class="main-footer" role="contentinfo">
       <div class="footer-inner">
         <span>&copy; 2019 GabbardDesigns</span>
+        {% block footerButton %}
+          <button class="button footer-button" onclick="location='/product/selectproduct/'">View Inventory Details</button>
+        {% endblock %}
       </div>
     </footer>
     <!-- /footer-->
 
   </main>
   <!--/main-container-->
-<script src="{% static 'scripts/core.js' %}"></script>
 
+{%  block scripts %}
+    <script src="{% static 'scripts/core.js' %}"></script>
+{% endblock %}
 
 </body>
 

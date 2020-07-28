@@ -18,12 +18,22 @@
 </head>
 {% load i18n %}
 
+ <!-- CHANGE ORIENTATION SECTION
+      Divs Phone and Message are hidden initially, these show only when the device is in landscape and smaller than -->
+  <section id="changeOrientation">
+    <div class="phone"> </div>
+    <div class="message"> Please rotate your device! </div>
+  </section>
+  <!--/#CHANGE ORIENTATION-->
+
+
 <body class="django_admin_css {% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
   data-admin-utc-offset="{% now "Z" %}">
 
+
+
 <!-- Container -->
 <div id="main-container">
-
     {% if not is_popup %}
     <!-- Header -->
     <div id="header" class="main-header">
@@ -69,10 +79,14 @@
 
     {% endif %}
 
+
+
     <!-- Content -->
         {% block pretitle %}{% endblock %}
 {#        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}#}
         {% block content %}
+
+
         {% block object-tools %}{% endblock %}
         {{ content }}
         {% endblock %}
@@ -97,7 +111,7 @@
             <div class="messagebox">
             <ul class="messagelist">
                 {% for message in messages %}
-                    <li style="background-color: lightpink; list-style: none; padding:10px"
+                    <li
                         {% if message.tags %}
                             class="{{ message.tags }}"
                         {% endif %}>

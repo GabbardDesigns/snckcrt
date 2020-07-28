@@ -1,30 +1,80 @@
-{#{% extends 'base.html' %}#}
-{#{% load static %}#}
-{##}
-{#{% block content_header %}#}
-{#    Inventory#}
-{#{% endblock %}#}
-{##}
-{#{% block inventory_area %}#}
-{##}
-{#{% for product in inventory %}#}
-{#    <div class="product" id="product-{{product.id}}" onClick="location.href='../details/{{product.id}}'">#}
-{##}
-{#        <div class="title noselect">#}
-{#            {{product.title}}#}
-{#        </div>#}
-{##}
-{#        <div class="image_line noselect">#}
-{#            <img src="{{ product.url}}" alt="{{product.alt}}" />#}
-{#        </div>#}
-{##}
-{#        <div class="price noselect">#}
-{#            ${{product.price}}#}
-{#        </div>#}
-{##}
-{#    </div>#}
-{##}
-{##}
-{# {% endfor %}#}
-{#{% endblock %}#}
-{##}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content_header %}
+    Inventory
+{% endblock %}
+
+{% block inventory_area_title %}View Product Details{% endblock %}
+
+{% block order_area_title %} Item Details {% endblock %}
+
+{% block inventory_area %}
+<div id="inventory" aria-live="polite" class="inventory_list_section">
+{% for product in inventory %}
+    <div class="product" id="product-{{product.id}}" onClick='UpdatePKFunction({{product.id}})'>
+        <div class="title noselect">
+            {{product.title}}
+        </div>
+
+        <div class="image_line noselect">
+            <img src="{{ product.url}}" alt="{{product.alt}}" />
+        </div>
+
+        <div class="price noselect">
+            ${{product.price}}
+        </div>
+
+    </div>
+
+
+ {% endfor %}
+</div>
+{% endblock %}
+
+        {% block order_list_section %}
+            <div class="order_list_section" aria-relevant="additions removals" aria-live="polite">
+              <div class='panel-body' id='DetailView'>
+              </div>
+
+            </div>
+        {% endblock %}
+
+        {%  block pay_section %}
+            <div id="payHolder" class="total_section" aria-live="assertive" aria-atomic="true">
+            <div class="messagebox" style="padding-left:2vw; padding-top: 2vh; float:left">
+                <h1>Instructions</h1>
+            </div>
+                <div class="messagebox" style="padding-left:2vw; padding-top: 2vh; float:left">
+                 <p style="font-size:1.5vh;">Select an item from the inventory list to see its details.</p>
+             </div>
+            </div>
+        <div class="pay_button" id="paybutton">
+            <button class="button" onclick="location='/'">Return to Home</button>
+         </div>
+
+        {% endblock %}
+
+  {% block footerButton %}
+
+  {% endblock %}
+
+
+{%  block scripts %}
+
+<script
+			  src="https://code.jquery.com/jquery-3.5.1.min.js"
+			  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+			  crossorigin="anonymous"></script>
+<script>
+  function UpdatePKFunction(pk) {
+    pk = pk
+    $.ajax({
+      url: '../details/' + pk,
+      success: function(data) {
+        $('#DetailView').html(data);
+      }
+    });
+  };
+</script>
+{% endblock %}

@@ -352,9 +352,11 @@ ROTATE YOUR SCREEN MESSAGE FOR PHONES IN LANDSCAPE
     width: 100%;
   }
 
-  .main-container {
+  #main-container, .main-container {
     display: none;
   }
+
+
 
   body {
     display: flex;
@@ -1080,16 +1082,16 @@ min-height: unset !important;
 }
 
 
-.error{
+.error, .warning{
   background-color: lightpink;
   list-style: none;
-  padding:10px;
+  padding:20px;
 }
 
 .success {
   background-color: lightgreen;
   list-style: none;
-  padding:10px;
+  padding:20px;
 }
 
 button{
@@ -1198,6 +1200,7 @@ filter:grayscale(80%);
   .new{
       flex-flow: wrap;
   }
+
 }
 
 
@@ -1207,7 +1210,7 @@ filter:grayscale(80%);
 
 
 
-User Management
+/*User Management*/
 
 widgets.css
 .selector {
@@ -1247,5 +1250,25 @@ min-width: 4vw;
 }
 
 #changelist, #changelist-filter {
-    font-size: 1.1vw;
+    font-size: 1.5em;
+}
+
+
+.footer-button, .footer-button:hover, .footer-button:active, .footer-button:active:hover, .footer-button:focus, .footer-button:focus-within{
+  min-width: 8vw;
+  max-width: 20vw;
+  max-height: 4vh;
+  justify-content: space-evenly;
+  font-size: 1.5vh;
+}
+
+.footer-inner{
+  vertical-align: center;
+}
+
+@media (orientation: portrait) {
+
+  #changelist, #changelist-filter {
+    font-size: 1em;
+}
 }
