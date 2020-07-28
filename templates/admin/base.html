@@ -18,7 +18,7 @@
 </head>
 {% load i18n %}
 
-<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+<body class="django_admin_css {% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
   data-admin-utc-offset="{% now "Z" %}">
 
 <!-- Container -->
@@ -76,7 +76,16 @@
         {% block object-tools %}{% endblock %}
         {{ content }}
         {% endblock %}
-        {% block sidebar %}{% endblock %}
+
+{% block sidebar %}
+    <div class="order_column" id="second_container">
+    <div id="order_title" class="section_title" aria-live="polite"> Recent actions </div>
+        <div class="order_list_section" id="orders" aria-relevant="additions removals" aria-live="polite"></div>
+
+
+    </div>
+
+{% endblock %}
 
 {% block footer %}
     <!-- Start of redrawable .pay_section (bottom in all orientations) -->

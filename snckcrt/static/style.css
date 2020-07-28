@@ -782,7 +782,7 @@ Functional and Scripting Styles
 .disable {
   pointer-events: none;
   -webkit-filter: grayscale(100%);
-  filter: grayscale(100%), blur(20%);
+  filter: grayscale(100%) blur(20%);
   background-color: #ccc;
   color: lightslategrey;
 }
@@ -835,6 +835,7 @@ button:focus {
   flex: content;
   flex-basis: content;
   display: flex;
+
 }
 
 #changelist-filter {
@@ -992,7 +993,7 @@ background-color: #fff;
 #login-form .form-row label {
     padding-right: 0.5em;
     line-height: 2em;
-    font-size: 1vh;
+    font-size: 2vh;
     clear: both;
     color: #333;
 }
@@ -1172,5 +1173,79 @@ filter:grayscale(80%);
     padding-right: 1vh;
     margin: unset;
     font-size:3vh;
+
   }
+
+  .admin_square {
+    max-height: 15vh;
+    min-width: calc((100% / 7) - (0.25rem - 2px));
+    max-width: calc((100% / 5) - (0.25rem - 2px));
+}
+
+
+}
+.django_admin_css .inventory_list_section, .django_admin_css .order_list_section {
+  overflow-y: auto;
+}
+#file1 input::after {content: '\A'; white-space: pre;}
+
+
+@media (orientation: portrait) {
+  .admin_square {
+    max-height: 13vh;
+  }
+
+  .new{
+      flex-flow: wrap;
+  }
+}
+
+
+#user_form form fieldset{
+  width:98%;
+}
+
+
+
+User Management
+
+widgets.css
+.selector {
+width: 100%;
+}
+
+.selector-available, .selector-chosen {
+width: 45%;
+}
+
+.selector .selector-filter label, .inline-group .aligned .selector .selector-filter label {
+width: 10px;
+}
+
+.selector .selector-available input {
+min-width: 4vw;
+}
+
+.selector select {
+min-width: 4vw;
+}
+
+.django_admin_css .vLargeTextField, .django_admin_css .vXMLLargeTextField {
+    width: 100%;
+}
+
+.django_admin_css .submit-row a.deletelink {
+    height: unset;
+}
+
+.django_admin_css .flex-filters li a:hover {
+  background-color: #ccc;
+}
+
+.results tr {
+   text-align: center;
+}
+
+#changelist, #changelist-filter {
+    font-size: 1.1vw;
 }

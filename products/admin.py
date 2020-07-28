@@ -6,6 +6,8 @@ from django.utils.safestring import mark_safe
 from django.core.serializers.json import DjangoJSONEncoder
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
+import logging
+from django.http import HttpResponse
 
 
 from copy import deepcopy
@@ -13,6 +15,7 @@ from copy import deepcopy
 from django.contrib.admin import AdminSite
 from .models import Product
 from .views import product_upload
+
 #
 # class MyAdminSite(AdminSite):
 #     site_header = 'Monty Python administration'
@@ -32,6 +35,9 @@ from .views import product_upload
 # admin_site.register(Product)
 
 # Register your models here.
+
+logger = logging.getLogger(__name__)
+
 
 class UserAdmin(UserAdmin):
 
@@ -68,11 +74,12 @@ class ProductAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
         inventory = Product.objects.order_by('title').exclude(active=False).values()
-
+        logger.error("Test!!")
         with open('snckcrt/static/data/refund.json', 'w') as teacherfile:
             teacherfile.write('[')
             for count, product in enumerate(inventory):
                 json.dump(product, teacherfile, cls=DjangoJSONEncoder)
+
                 if count < len(inventory)-1:
                     teacherfile.write(', ')
             teacherfile.write(']')

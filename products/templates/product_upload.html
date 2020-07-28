@@ -14,10 +14,11 @@
 
         <form id="login-form" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <label for="file1"> Please select a file to upload:</label>
-            <input type="file" id="file1" name="file">
-            <small>Only accepts CSV files</small>
-            <button type="submit">Upload</button>
+            <label for="file1"> Please select a CSV file to upload:</label>
+            <br><br>
+            <input style="padding-left:5vw;" type="file" id="file1" name="file">
+            <br><br>
+            <button style="margin-left:25vw;" type="submit">Upload</button>
         </form>
 
         <div>

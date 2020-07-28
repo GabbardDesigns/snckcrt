@@ -6,7 +6,7 @@ class Product(models.Model):
     title = models.CharField("Product Name", max_length=120, blank=False)
     price = models.DecimalField("Price per Unit", blank=False, max_digits=8, decimal_places=2)
     imagepath = models.ImageField("Image", upload_to='documents/images', default="", null=True)
-    alt = models.TextField("Alt Image Text", blank=True, null=True, default="items")
+    alt = models.CharField("Alt Image Text", max_length=120, blank=True, null=True, default="items")
     active = models.BooleanField("Show this product in my inventory.", blank=False, default=True)
 
     def __str__(self):

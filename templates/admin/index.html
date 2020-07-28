@@ -8,8 +8,9 @@
 
 <div id="first_container" class="inv_column">
 
-    <div id="inventory_title" aria-live="polite" class="section_title">Database Management</div>
+    <div id="inventory_title" aria-live="polite" class="section_title">{%block left_col_title %}Database Management{% endblock %}</div>
     <div id="inventory" aria-live="polite" class="inventory_list_section">
+        {%  block form %}
         {% if app_list %}
             {% for app in app_list %}
 
@@ -90,6 +91,7 @@
             <p>{% trans 'You don’t have permission to view or edit anything.' %}</p>
 
         {% endif %}
+       {% endblock %}
 </div>
 <div id="inventoryBottom" aria-live="polite"></div>
 </div>

@@ -2,6 +2,8 @@ import csv, io
 from django.contrib import messages
 from django.shortcuts import render
 from .models import Product
+import logging
+from django.http import HttpResponse
 
 
 def product_select_items_view(request):
@@ -29,6 +31,7 @@ def product_edit_view(request, id):
 
 def product_upload(request):
     # declaring template
+    logging.info('Upload process started.')
     template = "product_upload.html"
     data = Product.objects.all()
 

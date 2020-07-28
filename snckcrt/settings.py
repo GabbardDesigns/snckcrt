@@ -140,3 +140,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'snckcrt/media')
 # Examples: "http://example.com/media/"
 MEDIA_URL = '/media/'
 
+
