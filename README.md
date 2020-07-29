@@ -33,7 +33,7 @@ CL REQUIREMENTS
 ##### Create and call at least 3 functions, at least one of which must return a value that is used
 
     products/admin.py : ProductAdmin => save_model
-
+    
 
 This function extends the normal save function for all admin-side product views (add/edit/upload).  
  - The normal save function allows the addition/changes to be written to the database.  
@@ -41,15 +41,15 @@ This function extends the normal save function for all admin-side product views 
  - It then opens the JSON file that the frontend uses to populate its inventory, rewrites the inventory file, and then closes that file.
 
 
-    products/models.py | thumbnail_preview
-
+    products/models.py | thumbnail_preview 
+    
     
   - This function is called on self and assigns a thumbnail preview that is used in the amdin edit product view.  
   - It defines a “safe” snippet of html code that is returned by the function, effectively allowing for relational images of any product page.
 
 
-    products/views.py | product_detail_view(request, id)
-
+    products/views.py | product_detail_view(request, id) 
+    
     
   - This function provides both a Queryset and a record ID to the html rendered on the front-end product details page.  
   - The information passed back allow the page to dynamically re-render a portion of itself through an AJAX call when a user clicks one of the inventory buttons.     
