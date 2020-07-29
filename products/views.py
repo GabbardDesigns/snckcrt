@@ -1,6 +1,8 @@
 import csv, io, json
 from django.contrib import messages
 from django.shortcuts import render
+from django.template.defaultfilters import upper
+
 from .models import Product
 from django.core.serializers.json import DjangoJSONEncoder
 import logging
@@ -60,14 +62,14 @@ def product_upload(request):
 
     # check if it is a csv file
     if not csv_file.name.endswith('.csv'):
-        messages.error(request, 'THIS IS NOT A CSV FILE', 'Failed')
+        messages.error(request, f'{csv_file.name.upper()} IS NOT A CSV FILE', 'Failed')
         return render(request, template, prompt)
 
     # checks file for parsability based on our schema
     try:
         data_set = csv_file.read().decode('UTF-8')
     except:
-        messages.error(request, 'Please check the file, import error.', 'Failed')
+        messages.error(request, f'Import error with file {csv_file.name.upper()}. Please check the file and try again.', 'Failed')
         return render(request, template, prompt)
 
     # sets flag for plural text casing
@@ -77,22 +79,27 @@ def product_upload(request):
     # sets up stream that loops through each line
     io_string = io.StringIO(data_set)
     next(io_string)
-    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        _, created = Product.objects.update_or_create(
-            title=column[0],
-            price=column[1],
-            imagepath=column[2],
-            alt=column[3],
-            active=column[4].title()
-        )
-        prodcount += 1
+    try:
+        for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+            _, created = Product.objects.update_or_create(
+                title=column[0],
+                price=column[1],
+                imagepath=column[2],
+                alt=column[3],
+                active=column[4].upper()
+            )
+            prodcount += 1
+    except:
+        messages.error(request, f'Please check the file {csv_file.name.upper()}, an error occurred during parsing', 'Failed')
+        return render(request, template, prompt)
+
     if prodcount == 1:
         plural = ''
 
     context = {}
 
     #returns success messages
-    messages.success(request, 'File uploaded successfully.', 'Success')
+    messages.success(request, f'File {csv_file.name.upper()} uploaded successfully.', 'Success')
     messages.success(request, f'{prodcount} product{plural} added.', 'Success')
 
     # Force update of the json file for frontend
