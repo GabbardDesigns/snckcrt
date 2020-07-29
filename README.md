@@ -5,7 +5,7 @@
 
 This is a the continuation of a program started 6 months ago done entirely in vanilla javascript.  This new version is done using Python for the backend, through the use of Django and SQLite.  
 
-####Technical Summary
+#### Technical Summary
   - Python 3.8
   - Django 3.0.8
 
@@ -34,6 +34,7 @@ CL REQUIREMENTS
 
     products/admin.py : ProductAdmin => save_model
 
+
 This function extends the normal save function for all admin-side product views (add/edit/upload).  
  - The normal save function allows the addition/changes to be written to the database.  
  - The extension then creates a queryset from the database (selecting only the Active records and sorting them alphabetically by title)
@@ -41,12 +42,14 @@ This function extends the normal save function for all admin-side product views 
 
 
     products/models.py | thumbnail_preview
+
     
   - This function is called on self and assigns a thumbnail preview that is used in the amdin edit product view.  
   - It defines a “safe” snippet of html code that is returned by the function, effectively allowing for relational images of any product page.
 
 
     products/views.py | product_detail_view(request, id)
+
     
   - This function provides both a Queryset and a record ID to the html rendered on the front-end product details page.  
   - The information passed back allow the page to dynamically re-render a portion of itself through an AJAX call when a user clicks one of the inventory buttons.     
@@ -61,7 +64,7 @@ This function extends the normal save function for all admin-side product views 
  -  There is error handling for non-csv files, no file, and if the file is improperly formatted.  
  -  All errors and a success message are reported to the user dynamically in the Message Center portion of the page.
 
-
+-------------
 ##### Write data to an external file, and use that file in your application (cross language communication JavaScript/Python via AJAX)
 
     products/admin.py : class ProductAdmin – save_model function
@@ -70,11 +73,13 @@ This function extends the normal save function for all admin-side product views 
   - After it has added the new record to the database, it reads/writes the objects from the Product table in the database to a JSON file to be handled by the JavaScript frontend.  
   - The function does some scrubbing/filtering/sorting prior to loading over to JSON.  It check to ensure the object is set as active and sorts the inventory alphabetically prior to writing.
 
+-------------
+-------------
+#### What is new for version 3.0?
 
-#####Scope and Requirements
+##### Scope and Requirements
 Read the scoping and requirements in the SNACKCART 1.0 README: https://github.com/GabbardDesigns/snckcrt/blob/master/scoping.md
 
-#### _What is new for version 3.0?_
 This version of Snackcart has the following enhancements:
 
 ##### Backend Changes
@@ -87,11 +92,11 @@ This version of Snackcart has the following enhancements:
 
 All changes are reflected instantly in the inventory through a combination of rewriting the JSON file read on the front-end and scheudled checks for changes in file vs database.
 
-#####Front-end Changes
+##### Front-end Changes
 - Navigation changes dynamically based on whether user is logged in
 - Added ability to view details about the items in inventory through the use of a view inventory button on the homepage (in the footer).
 
-#####How to Make the Project Work
+##### How to Make the Project Work
 1. Setup a virtual environment (python -m venv /path/to/new/virtual/environment)
 2. Activate the environment in command prompt or terminal ($ source <venv>/bin/activate or C:\> <venv>\Scripts\activate.bat)
 3. Clone the GitHub project in your local directory with command git clone https://github.com/GabbardDesigns/snckcrt.git
@@ -113,7 +118,8 @@ All changes are reflected instantly in the inventory through a combination of re
 9. Access the front-end web interface at http://127.0.0.1:8000/ 
 10. Access the admin interface at http://127.0.0.1:8000/admin or by clciking the login link in the upper right corner.
 
-#####Stock User Information
+
+##### Stock User Information
 
     superuser | username: super | password: superuserpassword
 
