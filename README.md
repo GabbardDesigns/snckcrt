@@ -40,13 +40,14 @@ This function extends the normal save function for all admin-side product views 
  - The extension then creates a queryset from the database (selecting only the Active records and sorting them alphabetically by title)
  - It then opens the JSON file that the frontend uses to populate its inventory, rewrites the inventory file, and then closes that file.
 
+-----------------
 
     products/models.py | thumbnail_preview 
  
   - This function is called on self and assigns a thumbnail preview that is used in the amdin edit product view.  
   - It defines a “safe” snippet of html code that is returned by the function, effectively allowing for relational images of any product page.
 
-
+----------------
     products/views.py | product_detail_view(request, id) 
     
     
