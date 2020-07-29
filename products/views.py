@@ -16,7 +16,6 @@ def product_select_items_view(request):
 
 def product_detail_view(request, id):
     try:
-        # inventory = Product.objects.order_by('title').exclude(active=False)
         inventory = Product.objects.get(pk=id)
     except Product.DoesNotExist:
         raise Http404("Product not found")

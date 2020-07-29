@@ -1,0 +1,5 @@
+title,price,imagepath,alt,active
+French Fries,3.25,y,Hot Potatoes,TRUE
+Slice of Pizza,2.50,y,Hot and Fresh,False
+Entire Pizza,12.50,y,"A lot of food, but it's frozen",False
+
