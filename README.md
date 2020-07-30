@@ -116,7 +116,7 @@ All changes are reflected instantly in the inventory through a combination of re
         > python manage.py runserver
         
 9. Access the front-end web interface at http://127.0.0.1:8000/ 
-10. Access the admin interface at http://127.0.0.1:8000/admin or by clciking the login link in the upper right corner.
+10. Access the admin interface at http://127.0.0.1:8000/admin or by clicking the login link in the upper right corner.
 
 
 ##### Stock User Information
@@ -134,17 +134,22 @@ All changes are reflected instantly in the inventory through a combination of re
 
 ##### Quick Navigation 
 
-FRONTEND
+**FRONTEND**
+
 ![Image](https://github.com/GabbardDesigns/snckcrt/blob/master/snckcrt/static/images/cpanel/frontend.png "snackcart frontend")
+
 1. Login link for the Admin view.
 2. View Inventory Details Link (for front-end DB read view)
 
-BACKEND
+
+**BACKEND**
+
 ![Image](https://github.com/GabbardDesigns/snckcrt/blob/master/snckcrt/static/images/cpanel/backend.png "snackcart backend")
+
 1. View Site - Allows you to see the changes were made after uploading/adding new products, deleting and/or inactivating products. 
 2. Add New Products - Allows for the manual addition of single products
 3. View/Edit Products - Opens a list view of all products, selecting a product will open that product's record, editing the product and saving will update products record and refresh the frontend data file (JSON).
-4. Upload Products - Allow the upload of products via CSV, validated against file type, parses for valid data, some cleanup done automatically (forced round on money if 3 or mor edecimals, forced formatting on bools) and error handling for all other issues.  
+4. Upload Products - Allow the upload of products via CSV, validated against file type, parses for valid data, some cleanup done automatically (forced round on money if 3 or more decimals, forced formatting on bools) and error handling for all other issues.  
 
 #### Future Improvements
   - Move to or integrate React to allow for deployment on Android ecosystem. 
