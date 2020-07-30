@@ -17,6 +17,11 @@ class Product(models.Model):
 
     @property
     def thumbnail_preview(self):
+        """    This function is called on self and assigns a thumbnail preview that
+               is used in the amdin/edit_product_view.  It defines a “safe” snippet
+               of html code that is returned by the function, effectively allowing
+               relational images of any product page.
+        """
         if self.imagepath:
             return mark_safe('<img src="{}" width="100" height="100" />'.format(self.imagepath.url))
         return ""

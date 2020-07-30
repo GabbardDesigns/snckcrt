@@ -49,8 +49,7 @@ getPaymentOptions();
 // Read JSON Datafile for starter inventory and define inventory section in the HTML
 const importInventory = () => {
   let request = new XMLHttpRequest();
-  request.open("GET", "/static/data/refund.json", true);
-  // request.open("GET", "/static/data/inventory.json", true);
+  request.open("GET", "/static/data/inventory.json", true);
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
       let data = JSON.parse(request.responseText);

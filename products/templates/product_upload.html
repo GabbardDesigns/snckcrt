@@ -1,48 +1,56 @@
 {% extends "admin/base_site.html" %}
+    {#page built off the template /snkcrt/templates/admin/base_site.html#}
+
 {% load i18n static %}
 
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}">{% endblock %}
 
 {% block content %}
+      {#defines the html content for the left/top portion of the screen#}
+
     <div class="main-container product_upload" >
 
-<div id="first_container" class="inv_column">
+        <div id="first_container" class="inv_column">
 
-    <div id="inventory_title" aria-live="polite" class="section_title">{%block left_col_title %}Database Management{% endblock %}</div>
-    <div id="inventory" aria-live="polite" class="inventory_list_section">
+            <div id="inventory_title" aria-live="polite" class="section_title">
+                {%block left_col_title %}
+                    Database Management
+                {% endblock %}
+            </div>
 
-        <form id="login-form" action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <label for="file1"> Please select a CSV file to upload:</label>
-            <br><br>
-            <input style="padding-left:5vw;" type="file" id="file1" name="file">
-            <br><br>
-            <button style="margin-left:25vw;" type="submit">Upload</button>
-        </form>
+            <div id="inventory" aria-live="polite" class="inventory_list_section">
 
-        <div>
-            <p>Order of the CSV should be: title,price,imagepath,alt,active. </p>
+                <form id="login-form" action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="file1"> Please select a CSV file to upload:</label>
+                    <br><br>
+                    <input style="padding-left:5vw;" type="file" id="file1" name="file">
+                    <br><br>
+                    <button style="margin-left:25vw;" type="submit">Upload</button>
+                </form>
 
-               <p>
-                    If your content contains a comma (,) you must put that segment in between a set of quotation marks.  <br> <br> For example: <br>  date of birth, fullname, favcolor  <br> "13 October, 1993", "Dr. Brown, M.D", blue
-               </p>
+                <div>
+                    <p>Order of the CSV should be: title,price,imagepath,alt,active. </p>
+                    <p> If your content contains a comma (,) you must put that segment
+                        in between a set of quotation marks.
+                        <br> <br>
+                        For example: <br>
+                        date of birth, fullname, favcolor <br>
+                        "13 October, 1993", "Dr. Brown, M.D", blue
+                    </p>
+                </div>
 
-
-         </div>
-
-    </div>
+            </div>
     </div>
 {% endblock %}
 
-<div class="order_column" id="second_container" aria-atomic="true">
-
-
-
-    </div>
 {% block sidebar %}
+    {# defines the html content for the right/bottom portion of the screen #}
+    {# provides the information for how CSVs will be read in. #}
+
     <div class="order_column" id="second_container">
-    <div id="order_title" class="section_title" aria-live="polite"> Notes on CSVs </div>
-        <div class="order_list_section" id="orders" aria-relevant="additions removals" aria-live="polite">
+        <div id="order_title" class="section_title" aria-live="polite"> Notes on CSVs </div>
+            <div class="order_list_section" id="orders" aria-relevant="additions removals" aria-live="polite">
 
             <div>
 
@@ -58,25 +66,24 @@
 
         </div>
 
-
-
     </div>
-
 
 {% endblock %}
 
 {% block messages %}
+    {# defines the unique content for the messaging center at the bottom of the page #}
+
     <h1 style="padding-left:2vw; padding-top: 2vh">Message Center</h1>
       {% if messages %}
         <div class="messagebox">
-     <ul class="messagelist">
-        {% for message in messages %}
-            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
-                <strong>{{message|safe}}</strong>
-            </li>
-        {% endfor %}
-    {% endif %}
+             <ul class="messagelist">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        <strong>{{message|safe}}</strong>
+                    </li>
+                {% endfor %}
             </ul>
-    </div>
+        </div>
+      {% endif %}
 
 {% endblock %}

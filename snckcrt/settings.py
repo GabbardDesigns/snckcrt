@@ -25,7 +25,7 @@ SECRET_KEY = '#+r_vs^j*5(f#jqx!ta)hs)q+8-&6yy-kydu@yjyr-7laiov)#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
 
     # my apps
-    'products', 'pages', 'templates',
+    'products',
+    # 'pages',
+    'templates',
 ]
 
 MIDDLEWARE = [

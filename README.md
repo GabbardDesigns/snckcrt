@@ -14,7 +14,7 @@ The Pythonic portions of this project are:
   - The new view inventory button and subsequent pages on the front-end.
   - Technically the front-end is fed from a Python function, but the actual functionality of the front-end is all JavaScript.  
 
-CL REQUIREMENTS
+CL REQUIREMENTS (Installation, test files, and logins at the bottom of this file)
 -------------
 ##### Number of Commits: 10 Commits
 
@@ -132,6 +132,19 @@ All changes are reflected instantly in the inventory through a combination of re
   - Sample bad record test file: snckrt\test_files\bad_upload.csv
   - Sample bad file format test file: snckrt\test_files\bad_upload.txt
 
+##### Quick Navigation 
+
+FRONTEND
+![Image](https://github.com/GabbardDesigns/snckcrt/blob/master/snckcrt/static/images/cpanel/frontend.png "snackcart frontend")
+1. Login link for the Admin view.
+2. View Inventory Details Link (for front-end DB read view)
+
+BACKEND
+![Image](https://github.com/GabbardDesigns/snckcrt/blob/master/snckcrt/static/images/cpanel/backend.png "snackcart backend")
+1. View Site - Allows you to see the changes were made after uploading/adding new products, deleting and/or inactivating products. 
+2. Add New Products - Allows for the manual addition of single products
+3. View/Edit Products - Opens a list view of all products, selecting a product will open that product's record, editing the product and saving will update products record and refresh the frontend data file (JSON).
+4. Upload Products - Allow the upload of products via CSV, validated against file type, parses for valid data, some cleanup done automatically (forced round on money if 3 or mor edecimals, forced formatting on bools) and error handling for all other issues.  
 
 #### Future Improvements
   - Move to or integrate React to allow for deployment on Android ecosystem. 

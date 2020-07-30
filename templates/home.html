@@ -69,13 +69,18 @@
   <!--/#ModalPopUps-->
 {% endblock %}
 
+
+{% block footerButton %}
+    <button class="button footer-button" onclick="location='/product/selectproduct/'">View Inventory Details</button>
+{% endblock %}
+
 {% block extra_scripts %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
         var previous = null;
         var current = null;
         setInterval(function() {
-            $.getJSON("/static/data/refund.json", function(json) {
+            $.getJSON("/static/data/inventory.json", function(json) {
                 current = JSON.stringify(json);
                 if (previous && current && previous !== current) {
                     console.log('refresh');
@@ -88,3 +93,8 @@
 </script>
 
 {% endblock %}
+
+
+
+
+

@@ -21,17 +21,18 @@ from django.conf.urls import include
 from django.conf.urls.static import static
 
 from pages.views import home_view, contact_view, about_view, cpanel_view
-from products.views import product_select_items_view, product_upload
+from products.views import product_select_items_view, product_upload, product_detail_view
 
 urlpatterns = [
     path('', home_view, name='home'),
     path('admin/', admin.site.urls),
-    path('homes/', home_view, name='home'),
-    path('about/', about_view, name='about'),
-    path('contact/', contact_view, name='contact_us'),
+    # path('homes/', home_view, name='home'),
+    # path('about/', about_view, name='about'),
+    # path('contact/', contact_view, name='contact_us'),
+    path('inventory/details/<int:id>/', product_detail_view, name='viewdetails'),
     path('inventory/', product_select_items_view, name='inventory'),
     path('product/', include('products.urls')),
-    path('cpanel/', cpanel_view, name="control panel"),
+    # path('cpanel/', cpanel_view, name="control panel"),
     path('admin/products/upload-csv/', product_upload, name="product_upload"),
 ]
 
