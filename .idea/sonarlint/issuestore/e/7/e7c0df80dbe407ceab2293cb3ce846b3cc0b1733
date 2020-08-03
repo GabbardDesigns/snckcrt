@@ -1,6 +1,2 @@
 
-dpython:S3827""Emessages is not defined. Change its name or define it before using it(ÖÎ±8ƒéğ¾·.
-gpython:S3827"Crender is not defined. Change its name or define it before using it(¨•ŞÃüÿÿÿÿ8ƒéğ¾·.
-cpython:S3827"DProduct is not defined. Change its name or define it before using it(ú¸“À8ƒéğ¾·.
-dpython:S3827)"@csv is not defined. Change its name or define it before using it(àÂ¶Œüÿÿÿÿ8ƒéğ¾·.
-^python:S3827'"?io is not defined. Change its name or define it before using it(·³‚Ó8ƒéğ¾·.
+\python:S5754®"<Specify an exception class to catch or reraise the exception(ˆÊÉ·8œõÿ‡º.
