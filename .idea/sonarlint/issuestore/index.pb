@@ -148,3 +148,11 @@ S
 #snckcrt/test_files/multi_upload.csv,2\f\2f5dee275fddd2c6ba2946ce7a57a33be2da5536
 N
 snckcrt/static/scripts/test.js,0\e\0ed3d37a1bb4db19ec8b1da2241d255b03cee2dd
+L
+snckcrt/static/style-old.css,2\2\226fe3b70acb54de7a174bb7a7bfabaeb9efbaf2
+L
+snckcrt/static/new_style.css,1\2\12f48f0c21a3e7b4cdd7461cf12a6b3246ede041
+P
+ snckcrt/static/new_style.css.map,f\2\f2c0f9f23fd80edf147adab097f6adb88f4b666f
+M
+snckcrt/static/new_style.scss,7\a\7acf0fe8b67b7ddbdacb5e6b8adf2bffa200a72f

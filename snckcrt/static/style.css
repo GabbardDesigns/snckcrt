@@ -666,8 +666,7 @@ background-color:#ccc;
 }
 
 .footer-button,.footer-button:hover,.footer-button:active,.footer-button:active:hover,.footer-button:focus,.footer-button:focus-within {
-min-width:8vw;
-max-width:20vw;
+margin-left: 3vw;
 max-height:4vh;
 justify-content:space-evenly;
 font-size:1.5vh;
@@ -724,6 +723,7 @@ height:100%;
 width:100%;
 }
 
+
 #main-container,.main-container, .main-header {
 display:none;
 }
@@ -737,6 +737,11 @@ flex-direction:column;
 
 .phone,.message {
 display:block;
+}
+
+.footer-button{
+    font-size: 1.5vh;
+    width: 25vw;
 }
 
 }
@@ -840,6 +845,12 @@ flex-flow:wrap;
 .inventory_list_section .order_list_section,.paginator {
 padding-left:2vw;
 }
+
+.footer-button{
+    font-size: 1.5vh;
+    width: 30vw;
+}
+
 }
 
 @media (orientation: landscape){
@@ -957,7 +968,7 @@ line-height:2em;
 }
 
 .main-header {
-max-height:10vh;
+max-height:3vh;
 min-height:3vh;
 width:100%;
 }
@@ -1037,10 +1048,15 @@ margin:unset;
 padding:2vh 1vh;
 }
 
-  .admin_square {
+.admin_square {
     max-height: 15vh;
     min-width: calc((100% / 7) - (0.25rem - 2px));
     max-width: calc((100% / 5) - (0.25rem - 2px));
+}
+
+.footer-button{
+    font-size: 1.5vh;
+    width: 25vw;
 }
 
 }
@@ -1049,3 +1065,4 @@ padding:2vh 1vh;
 #issue_Refund, #order_Completed, #new_Order {
   display: none;
 }
+
