@@ -156,3 +156,11 @@ P
  snckcrt/static/new_style.css.map,f\2\f2c0f9f23fd80edf147adab097f6adb88f4b666f
 M
 snckcrt/static/new_style.scss,7\a\7acf0fe8b67b7ddbdacb5e6b8adf2bffa200a72f
+S
+#products/migrations/0001_initial.py,f\b\fbe92ee7830d289b5316832350e5c7df4424940d
+H
+snckcrt/static/fonts.css,7\2\72980e3904c44b1e004617e8159d45624274c8e6
+^
+.products/migrations/0002_auto_20200707_1608.py,e\c\ecc07b9247572d83cfc10626cc0dffcd7921b267
+8
+Procfile,b\c\bc3c68e880d1a01632bce79f69dd1387c7ba9c54
