@@ -43,11 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages',
+
 
     # third-party apps
     # 'adminplus',
     'sorl.thumbnail',
+    'storages',
 
     # my apps
     'products',
