@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#+r_vs^j*5(f#jqx!ta)hs)q+8-&6yy-kydu@yjyr-7laiov)#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ["127.0.0.1"]
+DEBUG = False
+#
+# ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
@@ -127,13 +127,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "snckcrt/static/"),
-    '/var/www/static/',
-]
+#
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "snckcrt/static/"),
+#     '/var/www/static/',
+# ]
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'snckcrt/media')
